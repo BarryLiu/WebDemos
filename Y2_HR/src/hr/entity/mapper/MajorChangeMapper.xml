@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hr.mapperdao.MajorChangeMapper" >
+  <resultMap id="BaseResultMap" type="hr.entity.MajorChange" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="first_kind_id" property="firstKindId" jdbcType="VARCHAR" />
+    <result column="first_kind_name" property="firstKindName" jdbcType="VARCHAR" />
+    <result column="second_kind_id" property="secondKindId" jdbcType="VARCHAR" />
+    <result column="second_kind_name" property="secondKindName" jdbcType="VARCHAR" />
+    <result column="third_kind_id" property="thirdKindId" jdbcType="VARCHAR" />
+    <result column="third_kind_name" property="thirdKindName" jdbcType="VARCHAR" />
+    <result column="major_kind_id" property="majorKindId" jdbcType="VARCHAR" />
+    <result column="major_kind_name" property="majorKindName" jdbcType="VARCHAR" />
+    <result column="major_id" property="majorId" jdbcType="VARCHAR" />
+    <result column="major_name" property="majorName" jdbcType="VARCHAR" />
+    <result column="new_first_kind_id" property="newFirstKindId" jdbcType="VARCHAR" />
+    <result column="new_first_kind_name" property="newFirstKindName" jdbcType="VARCHAR" />
+    <result column="new_second_kind_id" property="newSecondKindId" jdbcType="VARCHAR" />
+    <result column="new_second_kind_name" property="newSecondKindName" jdbcType="VARCHAR" />
+    <result column="new_third_kind_id" property="newThirdKindId" jdbcType="VARCHAR" />
+    <result column="new_third_kind_name" property="newThirdKindName" jdbcType="VARCHAR" />
+    <result column="new_major_kind_id" property="newMajorKindId" jdbcType="VARCHAR" />
+    <result column="new_major_kind_name" property="newMajorKindName" jdbcType="VARCHAR" />
+    <result column="new_major_id" property="newMajorId" jdbcType="VARCHAR" />
+    <result column="new_major_name" property="newMajorName" jdbcType="VARCHAR" />
+    <result column="human_id" property="humanId" jdbcType="VARCHAR" />
+    <result column="human_name" property="humanName" jdbcType="VARCHAR" />
+    <result column="salary_standard_id" property="salaryStandardId" jdbcType="VARCHAR" />
+    <result column="salary_standard_name" property="salaryStandardName" jdbcType="VARCHAR" />
+    <result column="salary_sum" property="salarySum" jdbcType="DOUBLE" />
+    <result column="new_salary_standard_id" property="newSalaryStandardId" jdbcType="VARCHAR" />
+    <result column="new_salary_standard_name" property="newSalaryStandardName" jdbcType="VARCHAR" />
+    <result column="new_salary_sum" property="newSalarySum" jdbcType="DOUBLE" />
+    <result column="change_reason" property="changeReason" jdbcType="VARCHAR" />
+    <result column="check_reason" property="checkReason" jdbcType="VARCHAR" />
+    <result column="check_status" property="checkStatus" jdbcType="INTEGER" />
+    <result column="register" property="register" jdbcType="VARCHAR" />
+    <result column="checker" property="checker" jdbcType="VARCHAR" />
+    <result column="regist_time" property="registTime" jdbcType="DATE" />
+    <result column="check_time" property="checkTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, first_kind_id, first_kind_name, second_kind_id, second_kind_name, third_kind_id, 
+    third_kind_name, major_kind_id, major_kind_name, major_id, major_name, new_first_kind_id, 
+    new_first_kind_name, new_second_kind_id, new_second_kind_name, new_third_kind_id, 
+    new_third_kind_name, new_major_kind_id, new_major_kind_name, new_major_id, new_major_name, 
+    human_id, human_name, salary_standard_id, salary_standard_name, salary_sum, new_salary_standard_id, 
+    new_salary_standard_name, new_salary_sum, change_reason, check_reason, check_status, 
+    register, checker, regist_time, check_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="hr.entity.MajorChangeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from major_change
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from major_change
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from major_change
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="hr.entity.MajorChangeExample" >
+    delete from major_change
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="hr.entity.MajorChange" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into major_change (first_kind_id, first_kind_name, second_kind_id, 
+      second_kind_name, third_kind_id, third_kind_name, 
+      major_kind_id, major_kind_name, major_id, 
+      major_name, new_first_kind_id, new_first_kind_name, 
+      new_second_kind_id, new_second_kind_name, new_third_kind_id, 
+      new_third_kind_name, new_major_kind_id, new_major_kind_name, 
+      new_major_id, new_major_name, human_id, 
+      human_name, salary_standard_id, salary_standard_name, 
+      salary_sum, new_salary_standard_id, new_salary_standard_name, 
+      new_salary_sum, change_reason, check_reason, 
+      check_status, register, checker, 
+      regist_time, check_time)
+    values (#{firstKindId,jdbcType=VARCHAR}, #{firstKindName,jdbcType=VARCHAR}, #{secondKindId,jdbcType=VARCHAR}, 
+      #{secondKindName,jdbcType=VARCHAR}, #{thirdKindId,jdbcType=VARCHAR}, #{thirdKindName,jdbcType=VARCHAR}, 
+      #{majorKindId,jdbcType=VARCHAR}, #{majorKindName,jdbcType=VARCHAR}, #{majorId,jdbcType=VARCHAR}, 
+      #{majorName,jdbcType=VARCHAR}, #{newFirstKindId,jdbcType=VARCHAR}, #{newFirstKindName,jdbcType=VARCHAR}, 
+      #{newSecondKindId,jdbcType=VARCHAR}, #{newSecondKindName,jdbcType=VARCHAR}, #{newThirdKindId,jdbcType=VARCHAR}, 
+      #{newThirdKindName,jdbcType=VARCHAR}, #{newMajorKindId,jdbcType=VARCHAR}, #{newMajorKindName,jdbcType=VARCHAR}, 
+      #{newMajorId,jdbcType=VARCHAR}, #{newMajorName,jdbcType=VARCHAR}, #{humanId,jdbcType=VARCHAR}, 
+      #{humanName,jdbcType=VARCHAR}, #{salaryStandardId,jdbcType=VARCHAR}, #{salaryStandardName,jdbcType=VARCHAR}, 
+      #{salarySum,jdbcType=DOUBLE}, #{newSalaryStandardId,jdbcType=VARCHAR}, #{newSalaryStandardName,jdbcType=VARCHAR}, 
+      #{newSalarySum,jdbcType=DOUBLE}, #{changeReason,jdbcType=VARCHAR}, #{checkReason,jdbcType=VARCHAR}, 
+      #{checkStatus,jdbcType=INTEGER}, #{register,jdbcType=VARCHAR}, #{checker,jdbcType=VARCHAR}, 
+      #{registTime,jdbcType=DATE}, #{checkTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="hr.entity.MajorChange" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into major_change
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="firstKindId != null" >
+        first_kind_id,
+      </if>
+      <if test="firstKindName != null" >
+        first_kind_name,
+      </if>
+      <if test="secondKindId != null" >
+        second_kind_id,
+      </if>
+      <if test="secondKindName != null" >
+        second_kind_name,
+      </if>
+      <if test="thirdKindId != null" >
+        third_kind_id,
+      </if>
+      <if test="thirdKindName != null" >
+        third_kind_name,
+      </if>
+      <if test="majorKindId != null" >
+        major_kind_id,
+      </if>
+      <if test="majorKindName != null" >
+        major_kind_name,
+      </if>
+      <if test="majorId != null" >
+        major_id,
+      </if>
+      <if test="majorName != null" >
+        major_name,
+      </if>
+      <if test="newFirstKindId != null" >
+        new_first_kind_id,
+      </if>
+      <if test="newFirstKindName != null" >
+        new_first_kind_name,
+      </if>
+      <if test="newSecondKindId != null" >
+        new_second_kind_id,
+      </if>
+      <if test="newSecondKindName != null" >
+        new_second_kind_name,
+      </if>
+      <if test="newThirdKindId != null" >
+        new_third_kind_id,
+      </if>
+      <if test="newThirdKindName != null" >
+        new_third_kind_name,
+      </if>
+      <if test="newMajorKindId != null" >
+        new_major_kind_id,
+      </if>
+      <if test="newMajorKindName != null" >
+        new_major_kind_name,
+      </if>
+      <if test="newMajorId != null" >
+        new_major_id,
+      </if>
+      <if test="newMajorName != null" >
+        new_major_name,
+      </if>
+      <if test="humanId != null" >
+        human_id,
+      </if>
+      <if test="humanName != null" >
+        human_name,
+      </if>
+      <if test="salaryStandardId != null" >
+        salary_standard_id,
+      </if>
+      <if test="salaryStandardName != null" >
+        salary_standard_name,
+      </if>
+      <if test="salarySum != null" >
+        salary_sum,
+      </if>
+      <if test="newSalaryStandardId != null" >
+        new_salary_standard_id,
+      </if>
+      <if test="newSalaryStandardName != null" >
+        new_salary_standard_name,
+      </if>
+      <if test="newSalarySum != null" >
+        new_salary_sum,
+      </if>
+      <if test="changeReason != null" >
+        change_reason,
+      </if>
+      <if test="checkReason != null" >
+        check_reason,
+      </if>
+      <if test="checkStatus != null" >
+        check_status,
+      </if>
+      <if test="register != null" >
+        register,
+      </if>
+      <if test="checker != null" >
+        checker,
+      </if>
+      <if test="registTime != null" >
+        regist_time,
+      </if>
+      <if test="checkTime != null" >
+        check_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="firstKindId != null" >
+        #{firstKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="firstKindName != null" >
+        #{firstKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="secondKindId != null" >
+        #{secondKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="secondKindName != null" >
+        #{secondKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdKindId != null" >
+        #{thirdKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdKindName != null" >
+        #{thirdKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="majorKindId != null" >
+        #{majorKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="majorKindName != null" >
+        #{majorKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="majorId != null" >
+        #{majorId,jdbcType=VARCHAR},
+      </if>
+      <if test="majorName != null" >
+        #{majorName,jdbcType=VARCHAR},
+      </if>
+      <if test="newFirstKindId != null" >
+        #{newFirstKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="newFirstKindName != null" >
+        #{newFirstKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="newSecondKindId != null" >
+        #{newSecondKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="newSecondKindName != null" >
+        #{newSecondKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="newThirdKindId != null" >
+        #{newThirdKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="newThirdKindName != null" >
+        #{newThirdKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="newMajorKindId != null" >
+        #{newMajorKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="newMajorKindName != null" >
+        #{newMajorKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="newMajorId != null" >
+        #{newMajorId,jdbcType=VARCHAR},
+      </if>
+      <if test="newMajorName != null" >
+        #{newMajorName,jdbcType=VARCHAR},
+      </if>
+      <if test="humanId != null" >
+        #{humanId,jdbcType=VARCHAR},
+      </if>
+      <if test="humanName != null" >
+        #{humanName,jdbcType=VARCHAR},
+      </if>
+      <if test="salaryStandardId != null" >
+        #{salaryStandardId,jdbcType=VARCHAR},
+      </if>
+      <if test="salaryStandardName != null" >
+        #{salaryStandardName,jdbcType=VARCHAR},
+      </if>
+      <if test="salarySum != null" >
+        #{salarySum,jdbcType=DOUBLE},
+      </if>
+      <if test="newSalaryStandardId != null" >
+        #{newSalaryStandardId,jdbcType=VARCHAR},
+      </if>
+      <if test="newSalaryStandardName != null" >
+        #{newSalaryStandardName,jdbcType=VARCHAR},
+      </if>
+      <if test="newSalarySum != null" >
+        #{newSalarySum,jdbcType=DOUBLE},
+      </if>
+      <if test="changeReason != null" >
+        #{changeReason,jdbcType=VARCHAR},
+      </if>
+      <if test="checkReason != null" >
+        #{checkReason,jdbcType=VARCHAR},
+      </if>
+      <if test="checkStatus != null" >
+        #{checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="register != null" >
+        #{register,jdbcType=VARCHAR},
+      </if>
+      <if test="checker != null" >
+        #{checker,jdbcType=VARCHAR},
+      </if>
+      <if test="registTime != null" >
+        #{registTime,jdbcType=DATE},
+      </if>
+      <if test="checkTime != null" >
+        #{checkTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="hr.entity.MajorChangeExample" resultType="java.lang.Integer" >
+    select count(*) from major_change
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update major_change
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.firstKindId != null" >
+        first_kind_id = #{record.firstKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firstKindName != null" >
+        first_kind_name = #{record.firstKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secondKindId != null" >
+        second_kind_id = #{record.secondKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secondKindName != null" >
+        second_kind_name = #{record.secondKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.thirdKindId != null" >
+        third_kind_id = #{record.thirdKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.thirdKindName != null" >
+        third_kind_name = #{record.thirdKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.majorKindId != null" >
+        major_kind_id = #{record.majorKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.majorKindName != null" >
+        major_kind_name = #{record.majorKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.majorId != null" >
+        major_id = #{record.majorId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.majorName != null" >
+        major_name = #{record.majorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newFirstKindId != null" >
+        new_first_kind_id = #{record.newFirstKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newFirstKindName != null" >
+        new_first_kind_name = #{record.newFirstKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newSecondKindId != null" >
+        new_second_kind_id = #{record.newSecondKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newSecondKindName != null" >
+        new_second_kind_name = #{record.newSecondKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newThirdKindId != null" >
+        new_third_kind_id = #{record.newThirdKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newThirdKindName != null" >
+        new_third_kind_name = #{record.newThirdKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newMajorKindId != null" >
+        new_major_kind_id = #{record.newMajorKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newMajorKindName != null" >
+        new_major_kind_name = #{record.newMajorKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newMajorId != null" >
+        new_major_id = #{record.newMajorId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newMajorName != null" >
+        new_major_name = #{record.newMajorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.humanId != null" >
+        human_id = #{record.humanId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.humanName != null" >
+        human_name = #{record.humanName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salaryStandardId != null" >
+        salary_standard_id = #{record.salaryStandardId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salaryStandardName != null" >
+        salary_standard_name = #{record.salaryStandardName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salarySum != null" >
+        salary_sum = #{record.salarySum,jdbcType=DOUBLE},
+      </if>
+      <if test="record.newSalaryStandardId != null" >
+        new_salary_standard_id = #{record.newSalaryStandardId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newSalaryStandardName != null" >
+        new_salary_standard_name = #{record.newSalaryStandardName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newSalarySum != null" >
+        new_salary_sum = #{record.newSalarySum,jdbcType=DOUBLE},
+      </if>
+      <if test="record.changeReason != null" >
+        change_reason = #{record.changeReason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkReason != null" >
+        check_reason = #{record.checkReason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkStatus != null" >
+        check_status = #{record.checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.register != null" >
+        register = #{record.register,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checker != null" >
+        checker = #{record.checker,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registTime != null" >
+        regist_time = #{record.registTime,jdbcType=DATE},
+      </if>
+      <if test="record.checkTime != null" >
+        check_time = #{record.checkTime,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update major_change
+    set id = #{record.id,jdbcType=INTEGER},
+      first_kind_id = #{record.firstKindId,jdbcType=VARCHAR},
+      first_kind_name = #{record.firstKindName,jdbcType=VARCHAR},
+      second_kind_id = #{record.secondKindId,jdbcType=VARCHAR},
+      second_kind_name = #{record.secondKindName,jdbcType=VARCHAR},
+      third_kind_id = #{record.thirdKindId,jdbcType=VARCHAR},
+      third_kind_name = #{record.thirdKindName,jdbcType=VARCHAR},
+      major_kind_id = #{record.majorKindId,jdbcType=VARCHAR},
+      major_kind_name = #{record.majorKindName,jdbcType=VARCHAR},
+      major_id = #{record.majorId,jdbcType=VARCHAR},
+      major_name = #{record.majorName,jdbcType=VARCHAR},
+      new_first_kind_id = #{record.newFirstKindId,jdbcType=VARCHAR},
+      new_first_kind_name = #{record.newFirstKindName,jdbcType=VARCHAR},
+      new_second_kind_id = #{record.newSecondKindId,jdbcType=VARCHAR},
+      new_second_kind_name = #{record.newSecondKindName,jdbcType=VARCHAR},
+      new_third_kind_id = #{record.newThirdKindId,jdbcType=VARCHAR},
+      new_third_kind_name = #{record.newThirdKindName,jdbcType=VARCHAR},
+      new_major_kind_id = #{record.newMajorKindId,jdbcType=VARCHAR},
+      new_major_kind_name = #{record.newMajorKindName,jdbcType=VARCHAR},
+      new_major_id = #{record.newMajorId,jdbcType=VARCHAR},
+      new_major_name = #{record.newMajorName,jdbcType=VARCHAR},
+      human_id = #{record.humanId,jdbcType=VARCHAR},
+      human_name = #{record.humanName,jdbcType=VARCHAR},
+      salary_standard_id = #{record.salaryStandardId,jdbcType=VARCHAR},
+      salary_standard_name = #{record.salaryStandardName,jdbcType=VARCHAR},
+      salary_sum = #{record.salarySum,jdbcType=DOUBLE},
+      new_salary_standard_id = #{record.newSalaryStandardId,jdbcType=VARCHAR},
+      new_salary_standard_name = #{record.newSalaryStandardName,jdbcType=VARCHAR},
+      new_salary_sum = #{record.newSalarySum,jdbcType=DOUBLE},
+      change_reason = #{record.changeReason,jdbcType=VARCHAR},
+      check_reason = #{record.checkReason,jdbcType=VARCHAR},
+      check_status = #{record.checkStatus,jdbcType=INTEGER},
+      register = #{record.register,jdbcType=VARCHAR},
+      checker = #{record.checker,jdbcType=VARCHAR},
+      regist_time = #{record.registTime,jdbcType=DATE},
+      check_time = #{record.checkTime,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="hr.entity.MajorChange" >
+    update major_change
+    <set >
+      <if test="firstKindId != null" >
+        first_kind_id = #{firstKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="firstKindName != null" >
+        first_kind_name = #{firstKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="secondKindId != null" >
+        second_kind_id = #{secondKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="secondKindName != null" >
+        second_kind_name = #{secondKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdKindId != null" >
+        third_kind_id = #{thirdKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdKindName != null" >
+        third_kind_name = #{thirdKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="majorKindId != null" >
+        major_kind_id = #{majorKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="majorKindName != null" >
+        major_kind_name = #{majorKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="majorId != null" >
+        major_id = #{majorId,jdbcType=VARCHAR},
+      </if>
+      <if test="majorName != null" >
+        major_name = #{majorName,jdbcType=VARCHAR},
+      </if>
+      <if test="newFirstKindId != null" >
+        new_first_kind_id = #{newFirstKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="newFirstKindName != null" >
+        new_first_kind_name = #{newFirstKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="newSecondKindId != null" >
+        new_second_kind_id = #{newSecondKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="newSecondKindName != null" >
+        new_second_kind_name = #{newSecondKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="newThirdKindId != null" >
+        new_third_kind_id = #{newThirdKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="newThirdKindName != null" >
+        new_third_kind_name = #{newThirdKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="newMajorKindId != null" >
+        new_major_kind_id = #{newMajorKindId,jdbcType=VARCHAR},
+      </if>
+      <if test="newMajorKindName != null" >
+        new_major_kind_name = #{newMajorKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="newMajorId != null" >
+        new_major_id = #{newMajorId,jdbcType=VARCHAR},
+      </if>
+      <if test="newMajorName != null" >
+        new_major_name = #{newMajorName,jdbcType=VARCHAR},
+      </if>
+      <if test="humanId != null" >
+        human_id = #{humanId,jdbcType=VARCHAR},
+      </if>
+      <if test="humanName != null" >
+        human_name = #{humanName,jdbcType=VARCHAR},
+      </if>
+      <if test="salaryStandardId != null" >
+        salary_standard_id = #{salaryStandardId,jdbcType=VARCHAR},
+      </if>
+      <if test="salaryStandardName != null" >
+        salary_standard_name = #{salaryStandardName,jdbcType=VARCHAR},
+      </if>
+      <if test="salarySum != null" >
+        salary_sum = #{salarySum,jdbcType=DOUBLE},
+      </if>
+      <if test="newSalaryStandardId != null" >
+        new_salary_standard_id = #{newSalaryStandardId,jdbcType=VARCHAR},
+      </if>
+      <if test="newSalaryStandardName != null" >
+        new_salary_standard_name = #{newSalaryStandardName,jdbcType=VARCHAR},
+      </if>
+      <if test="newSalarySum != null" >
+        new_salary_sum = #{newSalarySum,jdbcType=DOUBLE},
+      </if>
+      <if test="changeReason != null" >
+        change_reason = #{changeReason,jdbcType=VARCHAR},
+      </if>
+      <if test="checkReason != null" >
+        check_reason = #{checkReason,jdbcType=VARCHAR},
+      </if>
+      <if test="checkStatus != null" >
+        check_status = #{checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="register != null" >
+        register = #{register,jdbcType=VARCHAR},
+      </if>
+      <if test="checker != null" >
+        checker = #{checker,jdbcType=VARCHAR},
+      </if>
+      <if test="registTime != null" >
+        regist_time = #{registTime,jdbcType=DATE},
+      </if>
+      <if test="checkTime != null" >
+        check_time = #{checkTime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="hr.entity.MajorChange" >
+    update major_change
+    set first_kind_id = #{firstKindId,jdbcType=VARCHAR},
+      first_kind_name = #{firstKindName,jdbcType=VARCHAR},
+      second_kind_id = #{secondKindId,jdbcType=VARCHAR},
+      second_kind_name = #{secondKindName,jdbcType=VARCHAR},
+      third_kind_id = #{thirdKindId,jdbcType=VARCHAR},
+      third_kind_name = #{thirdKindName,jdbcType=VARCHAR},
+      major_kind_id = #{majorKindId,jdbcType=VARCHAR},
+      major_kind_name = #{majorKindName,jdbcType=VARCHAR},
+      major_id = #{majorId,jdbcType=VARCHAR},
+      major_name = #{majorName,jdbcType=VARCHAR},
+      new_first_kind_id = #{newFirstKindId,jdbcType=VARCHAR},
+      new_first_kind_name = #{newFirstKindName,jdbcType=VARCHAR},
+      new_second_kind_id = #{newSecondKindId,jdbcType=VARCHAR},
+      new_second_kind_name = #{newSecondKindName,jdbcType=VARCHAR},
+      new_third_kind_id = #{newThirdKindId,jdbcType=VARCHAR},
+      new_third_kind_name = #{newThirdKindName,jdbcType=VARCHAR},
+      new_major_kind_id = #{newMajorKindId,jdbcType=VARCHAR},
+      new_major_kind_name = #{newMajorKindName,jdbcType=VARCHAR},
+      new_major_id = #{newMajorId,jdbcType=VARCHAR},
+      new_major_name = #{newMajorName,jdbcType=VARCHAR},
+      human_id = #{humanId,jdbcType=VARCHAR},
+      human_name = #{humanName,jdbcType=VARCHAR},
+      salary_standard_id = #{salaryStandardId,jdbcType=VARCHAR},
+      salary_standard_name = #{salaryStandardName,jdbcType=VARCHAR},
+      salary_sum = #{salarySum,jdbcType=DOUBLE},
+      new_salary_standard_id = #{newSalaryStandardId,jdbcType=VARCHAR},
+      new_salary_standard_name = #{newSalaryStandardName,jdbcType=VARCHAR},
+      new_salary_sum = #{newSalarySum,jdbcType=DOUBLE},
+      change_reason = #{changeReason,jdbcType=VARCHAR},
+      check_reason = #{checkReason,jdbcType=VARCHAR},
+      check_status = #{checkStatus,jdbcType=INTEGER},
+      register = #{register,jdbcType=VARCHAR},
+      checker = #{checker,jdbcType=VARCHAR},
+      regist_time = #{registTime,jdbcType=DATE},
+      check_time = #{checkTime,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

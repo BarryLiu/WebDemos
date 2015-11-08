@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+ "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+    
+    <package name="grant" namespace="/grant" extends="struts-default">
+		    <action name="grantAction" class="grantAction">
+		        <result name="register_locate">/page/salaryGrant/register_locate.jsp</result>
+		        <result name="register_list">/page/salaryGrant/register_list.jsp</result>
+		        
+		        <result name="check_list">/page/salaryGrant/check_list.jsp</result>
+		        
+		        <result name="query_list">/page/salaryGrant/query_list.jsp</result>
+		    </action>
+    </package>
+    
+</struts>

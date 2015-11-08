@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+	<package name="urr" namespace="/urr" extends="struts-default">
+		<action name="urrAction" class="urrAction"></action>
+		
+		<action name="powerAction" class="powerAction">
+			 <result name="user_list">/page/power/user_list.jsp</result>		    
+			 <result name="user_edit">/page/power/user_edit.jsp</result>	
+			 <result name="user_add">/page/power/user_add.jsp</result>	
+
+			  <result name="success">/page/power/success.html</result>	
+			 	    
+			 <result name="right_list">/page/power/right_list.jsp</result>	
+			 <result name="right_add">/page/power/right_add.jsp</result>	
+			 <result name="right_list_information">/page/power/right_list_information.jsp</result>	
+			 
+		</action>
+	</package>
+</struts>
