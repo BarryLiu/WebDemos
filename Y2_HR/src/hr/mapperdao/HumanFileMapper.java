@@ -2,7 +2,10 @@ package hr.mapperdao;
 
 import hr.entity.HumanFile;
 import hr.entity.HumanFileExample;
+import hr.utils.UtilBean;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface HumanFileMapper {
@@ -33,4 +36,7 @@ public interface HumanFileMapper {
 	int count(HumanFile humanFile);
 
 	List<HumanFile> selectAll(@Param("humanFile")HumanFile humanFile,@Param("start") int start,@Param("rows") int rows);
+
+	List<HumanFile> selectAllByTag(@Param("humanFile")HumanFile humanFile,@Param("utilBean") UtilBean utilBean,
+			@Param("queryTag")String queryTag,@Param("start") int start,@Param("rows") int rows);
 }

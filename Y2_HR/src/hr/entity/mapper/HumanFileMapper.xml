@@ -1253,5 +1253,8 @@
 		human_major_id=#{humanMajorId}
 	</select>
   
-  
+  <select id="selectAllByTag" resultMap="BaseResultMap" parameterType="map">
+      select * from human_file 
+      limit #{start} , #{rows}
+  </select>
 </mapper>

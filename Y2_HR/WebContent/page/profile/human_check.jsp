@@ -1,33 +1,19 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css">
-		<link rel="stylesheet"
-			href="../../css/cwcalendar.css" type="text/css">
+	 
+		<script src="/Y2_HR/javascript/time.js"></script>
+<%@include file="/page/header.jsp" %>
 		<script type="text/javascript"
-			src="../../javascript/comm/comm.js">
-		</script>
-		<script language="javascript"
-			src="../../javascript/winopen/winopenm.js">
+			src="/Y2_HR/javascript/human_check.js">
 		</script>
 		<script type="text/javascript"
-			src="../../javascript/calendar-ch.js">
+			src="/Y2_HR/javascript/human_input_check.js">
 		</script>
-		<script type="text/javascript"
-			src="../../javascript/jquery-1.7.2.js">
-		</script>
-		<script type="text/javascript"
-			src="../../javascript/jquery.messager.js">
-		</script>
-		<script src="../../javascript/time.js"></script>
-		<script type="text/javascript"
-			src="../../javascript/human_check.js">
-		</script>
-		<script type="text/javascript"
-			src="../../javascript/human_input_check.js">
-		</script>
+
 	</head>
 	<body>
 
@@ -55,10 +41,10 @@
 						档案编号
 					</td>
 					<td colspan="6" class="TD_STYLE2">
-						bt23232098345
+						<s:property value="humanFile.id"/>
 					</td>
 					<td rowspan="6" width="13%" style="text-align: center;">
-						<img src="../../images/regular.jpg"  style="width:120px;height:150px;"/>
+						<img src="/Y2_HR/images/regular.jpg"  style="width:120px;height:150px;"/>
 					</td>
 				</tr>
 				<tr>
@@ -66,19 +52,19 @@
 						I级机构
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						集团
+						<s:property value="humanFile.firstKindName"/>
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						II级机构
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						湖南分校
+						<s:property value="humanFile.secondKindName"/>
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						III级机构
 					</td>
 					<td class="TD_STYLE2" colspan="2" width="2%">
-
+						<s:property value="humanFile.thirdKindName"/>
 					</td>
 				</tr>
 				<tr>
@@ -86,21 +72,20 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						软件开发
+						<s:property value="humanFile.humanMajorKindName"/>
 					</td>
 					<td class="TD_STYLE1">
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-						区域经理
+						<s:property value="humanFile.hunmaMajorName"/>
 					</td>
 					<td class="TD_STYLE1">
 						职称
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<select class="SELECT_STYLE1">
-							<option>经理</option>
-							<option>经理</option>
+							<option><s:property value="humanFile.humanProDesignation"/></option>
 						</select>
 					</td>
 				</tr>
@@ -109,7 +94,7 @@
 						姓名
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" id="humanName" name="humanFile.humanName" value="谢鹏"
+						<input type="text" id="humanName" name="humanFile.humanName" value="<s:property value="humanFile.humanName"/>"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
@@ -117,15 +102,14 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select class="SELECT_STYLE1">
-							<option>男</option>
-							<option>女</option>
+								 <option  ><s:property value="humanFile.humanSex"/></option> 
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						EMAIL
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanEmail" value="569065574@qq.com"
+						<input type="text" name="humanFile.humanEmail" value="<s:property value="humanFile.humanEmail"/>"
 							class="INPUT_STYLE2" id="humanEmail">
 					</td>
 				</tr>
@@ -134,21 +118,21 @@
 						电话
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanTelephone" value="0731-1111111"
+						<input type="text" name="humanFile.humanTelephone" value="<s:property value="humanFile.humanTelephone"/>"
 							class="INPUT_STYLE2" id="humanTelephone">
 					</td>
 					<td class="TD_STYLE1">
 						QQ
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanQq" value="569065574"
+						<input type="text" name="humanFile.humanQq" value="<s:property value="humanFile.humanQq"/>"
 							class="INPUT_STYLE2" id="humanQq">
 					</td>
 					<td class="TD_STYLE1">
 						手机
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanMobilephone" id="humanMobilephone"
+						<input type="text" name="humanFile.humanMobilephone" id="<s:property value="humanFile.humanMobilephone"/>"
 							value="13838383838" class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -157,14 +141,14 @@
 						住址
 					</td>
 					<td colspan="3" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanAddress" value="湖南"
+						<input type="text" name="humanFile.humanAddress" value="<s:property value="humanFile.humanAddress"/>"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanPostcode" value="421800"
+						<input type="text" name="humanFile.humanPostcode" value="<s:property value="humanFile.humanPostcode"/>"
 							class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -174,15 +158,14 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanNationality" class="SELECT_STYLE1">
-							<option>中国</option>
-							<option>美国</option>
+								 <option selected="selected" ><s:property value="humanFile.humanNationality"/></option> 
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						出生地
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanBirthplace" value="湖南"
+						<input type="text" name="humanFile.humanBirthplace" value="<s:property value="humanFile.humanBirthplace"/>"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
@@ -190,15 +173,14 @@
 					</td>
 					<td width="13%" class="TD_STYLE2">
 						<input type="text" name="humanFile.humanBirthday" readonly="readonly"
-							value="1993-12-08" class="INPUT_STYLE2" id="birthday">
+							value="<s:property value="humanFile.humanBirthday"/>" class="INPUT_STYLE2" id="birthday">
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						民族
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanRace" class="SELECT_STYLE1">
-							<option>汉族</option>
-							<option>回族</option>
+								 <option  ><s:property value="humanFile.humanRace"/></option> 
 						</select>
 					</td>
 				</tr>
@@ -208,8 +190,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanReligion" class="SELECT_STYLE1">
-							<option>无</option>
-							<option>佛教</option>
+								 <option  ><s:property value="humanFile.humanReligion"/></option> 
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -217,8 +198,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanParty" class="SELECT_STYLE1">
-							<option>群众</option>
-							<option>党员</option>
+								 <option  ><s:property value="humanFile.humanParty"/></option> 
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -226,13 +206,13 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="humanFile.humanIdCard" id="humanIdCard"
-							value="111111111111111111" class="INPUT_STYLE2">
+							value="<s:property value="humanFile.humanIdCard"/>" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						社会保障号码
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanSocietySecurityId" value="4353423"
+						<input type="text" name="humanFile.humanSocietySecurityId" value="<s:property value="humanFile.humanSocietySecurityId"/>"
 							class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -241,7 +221,7 @@
 						年龄
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanAge" value="19"
+						<input type="text" name="humanFile.humanAge" value="<s:property value="humanFile.humanAge"/>"
 							class="INPUT_STYLE2" id="humanAge">
 					</td>
 					<td class="TD_STYLE1">
@@ -249,9 +229,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanEducatedDegree" class="SELECT_STYLE1">
-							<option>高中</option>
-							<option>本科</option>
-							<option>大专</option>
+								 <option  ><s:property value="humanFile.humanEducatedDegree"/></option> 
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -259,8 +237,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanEducatedYears" class="SELECT_STYLE1">
-							<option>12</option>
-							<option>16</option>
+								 <option  ><s:property value="humanFile.humanEducatedYears"/></option> 
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -268,8 +245,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanEducatedMajor" class="SELECT_STYLE1">
-							<option>生物工程</option>
-							<option>计算机</option>
+								 <option  ><s:property value="humanFile.humanEducatedMajor"/></option> 
 						</select>
 					</td>
 				</tr>
@@ -279,15 +255,14 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.salaryStandardId" class="SELECT_STYLE1">
-							<option>薪酬标准1</option>
-							<option>薪酬标准2</option>
+								 <option  ><s:property value="humanFile.salaryStandardId"/></option> 
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						开户行
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanBank" value="建设银行"
+						<input type="text" name="humanFile.humanBank" value="<s:property value="humanFile.humanBank"/>"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
@@ -295,13 +270,13 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="humanFile.humanAccount"
-							value="6227002951240189402" class="INPUT_STYLE2">
+							value="<s:property value="humanFile.humanAccount"/>" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						复核人
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.checker" value="谢鹏"
+						<input type="text" name="humanFile.checker" value="${currUser.userTrueName }"
 							readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -311,7 +286,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="humanFile.checkTime"
-							id="create_time" readonly="readonly"
+							id="create_time" readonly="readonly" 
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
@@ -319,8 +294,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanSpeciality" class="SELECT_STYLE1">
-							<option>java</option>
-							<option>数据库</option>
+								 <option selected="selected" ><s:property value="humanFile.humanSpeciality"/></option> 
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -328,8 +302,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanHobby" class="SELECT_STYLE1">
-							<option>篮球</option>
-							<option>跳舞</option>
+								 <option  ><s:property value="humanFile.humanHobby"/></option> 
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -344,7 +317,7 @@
 						档案附件
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<a href="javascript:winopenm('query.jsp?filename=')">a.doc</a>
+						<a href="javascript:winopenm('query.jsp?filename=')"><s:property value="humanFile.attachmentName"/>.doc</a>
 					</td>
 				</tr>
 				<tr>
@@ -353,7 +326,7 @@
 					</td>
 					<td colspan="7" class="TD_STYLE2">
 						<textarea name="humanFile.humanHistroyRecords" rows="4"
-							class="TEXTAREA_STYLE1">上岛咖啡</textarea>
+							class="TEXTAREA_STYLE1"><s:property value="humanFile.humanFile.humanHistroyRecords"/></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -362,7 +335,7 @@
 					</td>
 					<td colspan="7" class="TD_STYLE2">
 						<textarea name="humanFile.humanFamilyMembership" rows="4"
-							class="TEXTAREA_STYLE1">你猜</textarea>
+							class="TEXTAREA_STYLE1"><s:property value="humanFile.humanFamilyMembership"/></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -370,7 +343,7 @@
 						备注
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="humanFile.remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
+						<textarea name="humanFile.remark" rows="4" class="TEXTAREA_STYLE1"><s:property value="humanFile.remark"/></textarea>
 					</td>
 				</tr>
 			</table>

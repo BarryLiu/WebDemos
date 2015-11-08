@@ -9,5 +9,6 @@
 	
 	<bean id="profileAction" class="hr.action.profile.ProfileAction"  scope="prototype">
 		<property name="profileService" ref="profileService"></property>	
+		<property name="resumeService" ref="resumeService"></property>	
 	</bean>
 </beans>

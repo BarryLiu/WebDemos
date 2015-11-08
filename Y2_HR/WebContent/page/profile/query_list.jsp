@@ -38,15 +38,7 @@
 				class="TABLE_STYLE1"></table>
 	 
 			
-			
-			<p style="text-align: center;">
-					<a href="query_list.html" style="color:black;">首页</a>
-					<a href="query_list.html" style="color:black;">上一页</a>
-								<font color="red">1</font> 
-								<a href="query_list.html" style="color:black;">2</a> 
-     				<a href="query_list.html" style="color:black;">尾页</a> 
-				
-			</p>
+		 
 		</form>
  
 	</body>

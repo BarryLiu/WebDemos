@@ -15,8 +15,8 @@ import hr.entity.ConfigFileThirdKind;
 import hr.entity.ConfigMajor;
 import hr.entity.ConfigMajorKind;
 import hr.entity.HumanFile;
-
 import hr.service.BaseService;
+import hr.utils.UtilBean;
 
 public class ProfileService extends BaseService{
 
@@ -124,6 +124,31 @@ public class ProfileService extends BaseService{
 		data.put("rows", humanFiles);
 		
 		return data;
+	}
+
+	public Map<String, Object> selectProfileTag(HumanFile humanFile,UtilBean utilBean, int page,
+			int rows) {
+		if( page <=0)page=1;
+		if(rows ==0) rows =5;
+		if(humanFile==null) humanFile = new HumanFile();
+		String queryTag = ServletActionContext.getRequest().getParameter("queryTag");
+		List<HumanFile> humanFiles = humanFileMapper.selectAllByTag(humanFile,utilBean,queryTag,(page - 1) * rows,rows);
+		System.out.println("humanFiles.size() :  "+humanFiles.size());
+		Map<String, Object> data = new HashMap<String, Object>();
+
+		int total = humanFileMapper.count(humanFile);
+		data.put("total", total);
+		data.put("rows", humanFiles);
+		
+		return data;
+	}
+
+	public int selectCount() {
+		return humanFileMapper.countByExample(null);
+	}
+
+	public HumanFile selectHumanFile(Integer id) {
+		return humanFileMapper.selectByPrimaryKey(id);
 	}
 	
 }

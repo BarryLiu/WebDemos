@@ -5,13 +5,12 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="/page/header.jsp" %>
-		<script type="text/javascript"
-			src="../../javascript/human_input_check.js">
-		</script>
+<script type="text/javascript"	src="/Y2_HR/javascript/query_locate1.js"></script>
+	
 	</head>
 
 	<body>
-		<form method="post" action="register_choose_picture.html">
+		<form method="post" action="/Y2_HR/page/profile/register_choose_picture.jsp">
 			<table width="100%">
 				<tr>
 					<td>
@@ -26,26 +25,24 @@
 				</tr>
 			</table>
 			<table width="100%" border="1" cellpadding=3 cellspacing=1
-				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
 				<tr>
 					<td class="TD_STYLE1" width="11%">
 						I级机构
 					</td>
-					<td width="14%" class="TD_STYLE2">
-						<select name="humanFile.firstKindId" class="SELECT_STYLE1" id="firstKind">
-							<option value="0">请选择</option>
-							<option>集团</option>
-						</select>
+					<td width="14%" class="TD_STYLE2"><s:select name="humanFile.firstKindId" list="firsts"
+						 headerKey="0" headerValue="全部"   value="0" 
+						listKey="firstKindId" listValue="firstKindName"  
+						theme="simple" cssClass="SELECT_STYLE1" onchange="findSecond()"
+						id="fstSel" ></s:select>
 						<input type="hidden" name="humanFile.firstKindName"/>
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						II级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-						<select name="humanFile.secondKindId" class="SELECT_STYLE1" id="secondKind">
+						<select name="humanFile.secondKindId" class="SELECT_STYLE1" id="secondKind"  onchange="findThird()">
 							<option value="0">请选择</option>
-							<option>湖南分校</option>
 						</select>
 						<input type="hidden" name="humanFile.secondKindName"/>
 					</td>
@@ -55,7 +52,6 @@
 					<td class="TD_STYLE2" colspan="2">
 						<select name="humanFile.thirdKindId" class="SELECT_STYLE1" id="thirdKind">
 							<option value="0">请选择</option>
-							<option>长沙华瑞</option>
 						</select>
 						<input type="hidden" name="humanFile.thirdKindName"/>
 					</td>
@@ -67,10 +63,12 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanMajorKindId" class="SELECT_STYLE1" id="majorKind">
-							<option>销售</option>
-							<option>软件开发</option>
-						</select>
+						<s:select list="majorKinds" name="humanFile.humanMajorKindId"
+							 headerKey="0" headerValue="全部"   value="0"
+							listKey="majorKindId" listValue="majorKindName" 
+							theme="simple" cssClass="SELECT_STYLE1" onchange="findMajor()"
+							id="mjrkind" >
+						</s:select>
 						<input type="hidden" name="humanFile.humanMajorKindName"/>
 					</td>
 					<td class="TD_STYLE1">
@@ -78,19 +76,19 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanMajorId" class="SELECT_STYLE1" id="majorName">
-							<option>区域经理</option>
-							<option>总经理</option>
 						</select>
-						<input type="hidden" name="humanFile.hunmaMajorName"/>
+						<input type="hidden" name="humanFile.hunmaMajorName" />
 					</td>
 					<td class="TD_STYLE1">
 						职称
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<select name="humanFile.humanProDesignation" class="SELECT_STYLE1">
-							<option>工程师</option>
-							<option>助理</option>
-							<option>经理</option>
+							<s:iterator value="configPublicChars">
+								<s:if test="attributeKind == '职称'">
+									<option value="<s:property value="attributeName"/>"><s:property value="attributeName"/></option> 
+								</s:if>
+							</s:iterator>
 						</select>
 					</td>
 				</tr>
@@ -107,12 +105,7 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanSex" class="SELECT_STYLE1">
-							<option value="男" selected="selected">
-								男
-							</option>
-							<option value="女">
-								女
-							</option>
+							
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -168,8 +161,11 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanNationality" class="SELECT_STYLE1">
-							<option>中国</option>
-							<option>美国</option>
+							<s:iterator value="configPublicChars">
+								<s:if test="attributeKind == '国籍'">
+									<option value="<s:property value="attributeName"/>"><s:property value="attributeName"/></option> 
+								</s:if>
+							</s:iterator>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -191,8 +187,11 @@
 					</td>
 					<td class="TD_STYLE2" width="14%">
 						<select name="humanFile.humanRace" class="SELECT_STYLE1">
-							<option>汉族</option>
-							<option>回族</option>
+							<s:iterator value="configPublicChars">
+								<s:if test="attributeKind == '民族'">
+									<option value="<s:property value="attributeName"/>"><s:property value="attributeName"/></option> 
+								</s:if>
+							</s:iterator>
 						</select>
 					</td>
 				</tr>
@@ -202,8 +201,11 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanReligion" class="SELECT_STYLE1">
-							<option>无</option>
-							<option>佛教</option>
+							<s:iterator value="configPublicChars">
+								<s:if test="attributeKind == '宗教信仰'">
+									<option value="<s:property value="attributeName"/>"><s:property value="attributeName"/></option> 
+								</s:if>
+							</s:iterator>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -211,8 +213,11 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanParty" class="SELECT_STYLE1"> 
-							<option>群众</option>
-							<option>党员</option>
+							<s:iterator value="configPublicChars">
+								<s:if test="attributeKind == '政治面貌'">
+									<option value="<s:property value="attributeName"/>"><s:property value="attributeName"/></option> 
+								</s:if>
+							</s:iterator>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -243,9 +248,11 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanEducatedDegree" class="SELECT_STYLE1">
-							<option>高中</option>
-							<option>本科</option>
-							<option>大专</option>
+							<s:iterator value="configPublicChars">
+								<s:if test="attributeKind == '学历'">
+									<option value="<s:property value="attributeName"/>"><s:property value="attributeName"/></option> 
+								</s:if>
+							</s:iterator>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -253,8 +260,11 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanEducatedYears" class="SELECT_STYLE1">
-							<option>12</option>
-							<option>16</option>
+							<s:iterator value="configPublicChars">
+								<s:if test="attributeKind == '教育年限'">
+									<option value="<s:property value="attributeName"/>"><s:property value="attributeName"/></option> 
+								</s:if>
+							</s:iterator>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -262,8 +272,11 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanEducatedMajor" class="SELECT_STYLE1">
-							<option>生物工程</option>
-							<option>计算机</option>
+							<s:iterator value="configPublicChars">
+								<s:if test="attributeKind == '专业'">
+									<option value="<s:property value="attributeName"/>"><s:property value="attributeName"/></option> 
+								</s:if>
+							</s:iterator>
 						</select>
 					</td>
 				</tr>
@@ -312,8 +325,11 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanSpeciality" class="SELECT_STYLE1">
-							<option>java</option>
-							<option>数据库</option>
+							<s:iterator value="configPublicChars">
+								<s:if test="attributeKind == '特长'">
+									<option value="<s:property value="attributeName"/>"><s:property value="attributeName"/></option> 
+								</s:if>
+							</s:iterator>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -321,8 +337,11 @@
 					</td>
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanHobby" class="SELECT_STYLE1">
-							<option>篮球</option>
-							<option>跳舞</option>
+							<s:iterator value="configPublicChars">
+								<s:if test="attributeKind == '爱好'">
+									<option value="<s:property value="attributeName"/>"><s:property value="attributeName"/></option> 
+								</s:if>
+							</s:iterator>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
