@@ -25,6 +25,7 @@
 		</script>
 		
 	
+	<%@include file="/page/header.jsp" %>
 		<script type="text/javascript"
 			src="javascript/login.js">
 		</script>
