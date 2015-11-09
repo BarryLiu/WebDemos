@@ -32,6 +32,9 @@
 		
 	</head>
 	<body>
+	<% 
+		session.removeAttribute("currUser");
+	%>
 		<form action="" method="post">
 			<div>
 				<table cellspacing=0 cellpadding=0 width=900 align=center border=0>
