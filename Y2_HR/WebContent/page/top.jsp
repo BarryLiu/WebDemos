@@ -27,7 +27,7 @@
 				<td style="text-align: right;font-size:17px;width:35%;color:black;">
 					<br />
 					欢迎你：${currUser.userTrueName}(${currUser.sysRole.roleName })&nbsp;
-					<input type="button" value="退出系统" class="BUTTON_STYLE1" onclick="parent.location.href='../login.html'"/>&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" value="退出系统" class="BUTTON_STYLE1" onclick="parent.location.href='../login.jsp'"/>&nbsp;&nbsp;&nbsp;&nbsp;
 				</td>
 			</tr>
 		</table>

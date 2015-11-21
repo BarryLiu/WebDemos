@@ -120,6 +120,7 @@ public class ProfileService extends BaseService{
 		Map<String, Object> data = new HashMap<String, Object>();
 
 		int total = humanFileMapper.count(humanFile);
+		System.out.println("total: "+total);
 		data.put("total", total);
 		data.put("rows", humanFiles);
 		
@@ -136,7 +137,7 @@ public class ProfileService extends BaseService{
 		System.out.println("humanFiles.size() :  "+humanFiles.size());
 		Map<String, Object> data = new HashMap<String, Object>();
 
-		int total = humanFileMapper.count(humanFile);
+		int total = humanFileMapper.countTag(humanFile,utilBean);
 		data.put("total", total);
 		data.put("rows", humanFiles);
 		
@@ -149,6 +150,10 @@ public class ProfileService extends BaseService{
 
 	public HumanFile selectHumanFile(Integer id) {
 		return humanFileMapper.selectByPrimaryKey(id);
+	}
+
+	public void saveHumanFile(HumanFile humanFile) {
+		humanFileMapper.insert(humanFile);
 	}
 	
 }

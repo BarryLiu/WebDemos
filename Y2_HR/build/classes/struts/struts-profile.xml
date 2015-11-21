@@ -3,9 +3,10 @@
 <struts>
 	<package name="profile" namespace="/profile" extends="struts-default">
 		<action name="profileAction" class="profileAction">
+		<!-- 人力资源档案登记 -->
 			<result name="human_register">/page/profile/human_register.jsp</result>
 			<result name="register_choose_picture">/page/profile/register_choose_picture.jsp</result>
-			
+		
 			<result name="success">/page/profile/success.html</result>
 			<result name="human_check">/page/profile/human_check.jsp</result>
 			

@@ -232,11 +232,13 @@ public class ProfileAction {
 	 * @throws IOException
 	 */
 	public String selectProfile() throws IOException {
+		
 		Map<String, Object> data = profileService.selectProfile(humanFile,
 				page, rows);
 		String jsonStr = new Gson().toJson(data);
 		System.out.println("jsonStr:    " + jsonStr);
 		sendClient(jsonStr);
+		System.out.println("page: " + page+"rows"+rows);
 		return null;
 	}
 	/**分页查询 比上面方法多了一个 条件(jsp 传过来 queryTag的值) 查询功能*/
@@ -263,6 +265,11 @@ public class ProfileAction {
 		majorKinds = profileService.selectAllMajorKinds();// 查询全部 的 职位种类
 		configPublicChars = resumeService.selectPublicChar(); // 查询全部的公共字段
 		return "human_register";
+	}
+	public String doTijiao(){
+		System.out.println("提交的数据："+humanFile);
+		profileService.saveHumanFile(humanFile);
+		return "register_choose_picture";
 	}
 	public String doDengji(){ // 登记
 		System.out.println("登记。。");

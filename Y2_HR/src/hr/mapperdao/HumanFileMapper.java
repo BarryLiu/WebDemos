@@ -33,10 +33,12 @@ public interface HumanFileMapper {
 
     
 //    自定义查询语句
-	int count(HumanFile humanFile);
+	int count(@Param("humanFile")HumanFile humanFile);
 
 	List<HumanFile> selectAll(@Param("humanFile")HumanFile humanFile,@Param("start") int start,@Param("rows") int rows);
 
 	List<HumanFile> selectAllByTag(@Param("humanFile")HumanFile humanFile,@Param("utilBean") UtilBean utilBean,
 			@Param("queryTag")String queryTag,@Param("start") int start,@Param("rows") int rows);
+
+	int countTag(@Param("humanFile")HumanFile humanFile,@Param("utilBean") UtilBean utilBean);
 }
