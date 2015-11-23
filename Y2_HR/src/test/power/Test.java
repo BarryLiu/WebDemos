@@ -22,6 +22,7 @@ public class Test {
 		testselectRightForRoleId();
 	}
 
+	//
 	private static void testselectRightForRoleId() {
 		RightMapper mapper = (RightMapper) cxt.getBean("rightMapper");
 		
