@@ -1,0 +1,48 @@
+SpringMVC:
+重要的类:
+ DispatcherServlet
+ ComboPooledDataSource,
+ SqlSessionFactoryBean,
+ SqlSessionTemplate,
+ DataSourceTransactionManager
+ 
+ 
+ 对应创智博客 《传智播客_Springmvc+Mybatis由浅入深全套视频教程video》
+ DispatcherServlet:(前端控制器)：接收请求request,进行响应 response调用
+ HandlerMapping(处理映射器):根据url查找handler,也可以通过注解,
+ HandlerAdapter(处理适配器): 根据特定的规则去执行Handler,编写handler时需要按照HandlerAdapter的要求去写
+ 
+ Handler(处理器)&(后端控制器)：要求程序员自己写,常用注解方式。
+	Handler处理器执行后的结果是ModelAndView,具体开发时Handler返回值类型包括String(逻辑视图名),ModelAndView,void
+	void(通过在Handler形参中添加request和response,类似原始开发方式),相当于Controller
+	
+ View resolver(视图解析器):根据逻辑视图名生成真正的视图(在springmvc中使用View对象表示)
+ 	View视图:jsp页面
+
+  
+注解开发：
+	注解映射器 xml中bean对象:RequestMappingHandlerMapping
+	注解适配器 xml中bean对象:RequestMappingHandlerAdapter
+	以<mvc:annotation-driven>代替处理器和映射器
+
+	@Controller 
+	@Service
+	@Repository
+	注入方式 	
+	手动
+	1.Xml 手动bean 注入
+
+	2 注解注入
+		2.1	@Resource
+		2.2	@Autowired(required=false（有的话没有配上就为null 不报错）) 自动根据类型注入    
+			@Autowired() @Qualifier("deptDao") 按名称注入
+		自动（不建议）
+		byType：在bean 中设置  auto-type="byType" 
+		byName
+		constructor   
+		autodetect 
+		
+		
+SpringMvc: 面向方式开发， 单例的,可以单例开发
+Struts2  ：面向类开发，只能多例开发
+ 
