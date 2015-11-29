@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.huarui.entity">
+
+	<class name="Dept">
+		<id name="deptno">
+			<generator class="sequence">
+				<param name="sequence">seq_dept</param>
+			</generator>
+		</id>
+		<property name="dname"></property>
+		<property name="loc"></property>
+
+		<!-- 配置关联属性 -->
+		<!-- dept.getEmps() -->
+		<!-- name关联属性的名称 -->
+
+		<!-- int deptno=10 -->
+		<!-- select * from dept where deptno=10 -->
+		<!-- select * from emp where deptno=10 -->
+
+		<!-- <set name="emps" lazy="false"> -->
+		<set name="emps">
+			<!-- 对方(Emp)用来关联我(Dept)的外键列名 -->
+			<key column="deptno"></key>
+			<!-- 关联属性的类型名称 -->
+			<one-to-many class="Emp" />
+		</set>
+	</class>
+
+</hibernate-mapping>
