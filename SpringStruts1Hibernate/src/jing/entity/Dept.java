@@ -2,10 +2,18 @@ package jing.entity;
 
 import java.util.Set;
 
+/**
+ * 部门
+ * @author BarryLiu
+ *
+ */
 public class Dept {
 
+	/**部门编号	 */
 	private Integer deptno;
+	/**部门名称	*/
 	private String dname;
+	/**部门地址	*/
 	private String loc;
 
 	// 关联属性

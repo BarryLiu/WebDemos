@@ -2,14 +2,25 @@ package jing.entity;
 
 import java.util.Date;
 
+/**
+ * 员工表
+ * @author BarryLiu
+ *
+ */
 public class Emp {
-
+	/**员工编号	*/
 	private Integer empno;
+	/**员工名称	*/
 	private String ename;
+	/**员工工作	*/
 	private String job;
+	/**上级编号	*/
 	private Integer mgr;
+	/**加入时间	*/
 	private Date hiredate;
+	/**工资 		*/
 	private Float sal;
+	/**奖金		*/
 	private Float comm;
 
 	// 与Emp表中的外键对应:并不是OOP的表示方式

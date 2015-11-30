@@ -7,7 +7,11 @@ import jing.entity.Dept;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
-
+/**
+ *  查询部门表
+ * @author BarryLiu
+ *
+ */
 public class DeptDao {
 
 	private HibernateTemplate template;

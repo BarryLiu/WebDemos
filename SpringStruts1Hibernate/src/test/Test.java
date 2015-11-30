@@ -67,11 +67,12 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
-		test1();
-		test1();
+//		test1();
+//		test1();
 		SessionFactory factory = SessionFactoryUtils.getSessionFactory();
-		Statistics statistics = factory.getStatistics();
-		System.out.println(statistics);
+		System.out.println(factory);
+//		Statistics statistics = factory.getStatistics();
+//		System.out.println(statistics);
 
 	}
 

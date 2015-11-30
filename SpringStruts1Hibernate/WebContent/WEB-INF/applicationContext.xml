@@ -13,10 +13,10 @@
 	<!-- 配置数据源 -->
 	<!-- 主要是给应用程序提供连接 -->
 	<bean id="ds" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:orcl"></property>
-		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="user" value="scott"></property>
-		<property name="password" value="tiger"></property>
+		<property name="jdbcUrl" value="jdbc:mysql:///test"></property>
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<property name="user" value="root"></property>
+		<property name="password" value="root"></property>
 	</bean>
 
 	<!-- <bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"> -->
@@ -35,14 +35,14 @@
 		<!-- 配置Hibernate运行时自身需要的一些属性 -->
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
 
 		<property name="mappingLocations">
 			<list>
-				<value>classpath:com/huarui/entity/hbm/*.hbm.xml</value>
+				<value>classpath:jing/entity/hbm/*.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -51,23 +51,24 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
-	<bean id="deptDao" class="com.huarui.dao.DeptDao">
+	<bean id="deptDao" class="jing.dao.DeptDao">
 		<!-- <property name="factory" ref="sessionFactory"></property> -->
 		<property name="template" ref="hibernateTemplate"></property>
 	</bean>
+	<bean id="empDao" class="jing.dao.EmpDao">
+		<property name="template" ref="hibernateTemplate"></property>
+	</bean>
 
-	<bean id="deptService" class="com.huarui.service.DeptService">
+	<bean id="firmService" class="jing.service.FirmService">
 		<property name="deptDao" ref="deptDao"></property>
+		<property name="empDao" ref="empDao"></property>
 	</bean>
 
-	<bean name="/deptAction" class="com.huarui.action.DeptAction">
-		<property name="deptService" ref="deptService"></property>
+	<bean name="/deptAction" class="jing.action.FirmAction">
+		<property name="firmService" ref="firmService"></property>
 	</bean>
 
-	<bean name="/deptAction2" class="com.huarui.action.DeptAction2">
-		<property name="deptDao" ref="deptDao"></property>
-	</bean>
-
+	 
 	<!-- 事务管理相关的配置 -->
 
 	<!-- 配置what 切面逻辑 -->
@@ -93,9 +94,9 @@
 	<aop:config>
 		<!-- what(when) How where -->
 		<aop:advisor advice-ref="adv1"
-			pointcut="execution(* com.huarui.service.*Service.*(..))" />
+			pointcut="execution(* jing.service.*Service.*(..))" />
 
 		<aop:advisor advice-ref="adv1"
-			pointcut="execution(* com.huarui.action.DeptAction2.*(..))" />
+			pointcut="execution(* jing.action.DeptAction2.*(..))" />
 	</aop:config>
 </beans>
