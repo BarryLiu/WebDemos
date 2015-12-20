@@ -1,4 +1,4 @@
-Spring+Struts1+Hibernate
+Spring+Struts2+Hibernate
 ================
 
   	For employees, departments a deletion cases instead of a one-to-many relationship
@@ -6,14 +6,6 @@ Spring+Struts1+Hibernate
  
  	There's a corresponding explanation for their future review these points
 -----------------------------------
-
-
-pic1[Image](https://github.com/BarryLiu/WebDemos/pic1.png)
-pic2[Image](https://github.com/BarryLiu/WebDemos/)
-pic3[Image](https://github.com/BarryLiu/WebDemos/)
-pic4[Image](https://github.com/BarryLiu/WebDemos/)
-pic5[Image](https://github.com/BarryLiu/WebDemos/)
-pic6[Image](https://github.com/BarryLiu/WebDemos/)
 
 * encoding: utf-8
 * Java&IDE: JDK8 Eclipse 
