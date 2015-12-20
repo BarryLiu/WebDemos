@@ -32,7 +32,8 @@
 		<!-- 第二个问号默认是主键的列名 -->
 		<!-- 第三个问号是获取的已知emp记录里面column对应的列值 -->
 		<!-- select * from dept where deptno=10 -->
-		<many-to-one name="dept" column="deptno"></many-to-one>
+		<!--lazy='false'表示查询了Emp就自动查询出他的Dept  -->
+		<many-to-one name="dept" column="deptno" lazy="false"></many-to-one>
 	</class>
 
 

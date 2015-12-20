@@ -1,14 +1,20 @@
-Spring+Struts2+MyBatis(Y2_HR)
-============
-* encoding: gbk
-* Java&IDE: JDK7 Eclipse 
-* Backend:  Struts2.3.7 Spring3.1.1 MyBatis3.3.0 (Configured by mapper)
-* Frontend: JQuery-EasyUI1.4 Javascript JQuery Ajax
+Spring+Struts1+Hibernate
+================
+
+  	For employees, departments a deletion cases instead of a one-to-many relationship
+-----------------------------------
+ 
+ 	There's a corresponding explanation for their future review these points
+-----------------------------------
+
+
+* encoding: utf-8
+* Java&IDE: JDK8 Eclipse 
+* Backend:  Struts2.3.7 Spring3.1.1 Hibernate3.1  
 * Database: Mysql6.3
 * Web Server: Tomcat 7
 * Build Tool: none
-* Windows: in10
-* Other: jxl dom4j itext POI C3P0  Log4j 
+* Windows: in10 
 ---------
 
 sAbout

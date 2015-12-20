@@ -27,10 +27,10 @@
 					<td>${e.empno }</td>
 					<td>${e.ename }</td>
 					<td>${e.sal }</td>
-					<td>${e }</td>
+					<td>${e.dept.dname }</td>
 					<td>
-						<a href="firmAction.do?method=modify&empno=${e.empno}">修改</a>
-						<a href="firmAction.do?method=remove&empno=${e.empno}">删除</a>
+						<a href="firmAction.do?method=toModifyEmp&empno=${e.empno}">修改</a>
+						<a href="firmAction.do?method=removeEmp&empno=${e.empno}">删除</a>
 					</td>
 				</tr>				
 			</c:forEach>

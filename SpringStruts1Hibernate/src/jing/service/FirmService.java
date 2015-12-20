@@ -1,5 +1,7 @@
 package jing.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +13,7 @@ import jing.entity.Dept;
 import jing.entity.Emp;
 
 /**
- * ¹«Ë¾service
+ * ï¿½ï¿½Ë¾service
  * 
  * @author BarryLiu
  */
@@ -48,12 +50,12 @@ public class FirmService {
 		return deptDao.getAll();
 	}
 
-	public void addEmp(HttpServletRequest request) {
+	public void addEmp(HttpServletRequest request) throws ParseException {
 		Emp emp = getEmpForScope(request);
 		empDao.save(emp);
 	}
 
-	private Emp getEmpForScope(HttpServletRequest request) {
+	private Emp getEmpForScope(HttpServletRequest request) throws ParseException {
 		String empno = request.getParameter("empno");
 		String ename = request.getParameter("ename");
 		String job = request.getParameter("job");
@@ -62,9 +64,9 @@ public class FirmService {
 		String sal = request.getParameter("sal");
 		String comm = request.getParameter("comm");
 		String deptno = request.getParameter("deptno");
-
-		Emp emp = new Emp(null, ename, job, Integer.valueOf(mgr), new Date(
-				hiredate), Float.valueOf(sal), Float.valueOf(comm));
+		
+		Date date=new SimpleDateFormat("yyyy-MM-dd").parse(hiredate);
+		Emp emp = new Emp(null, ename, job, Integer.valueOf(mgr), date, Float.valueOf(sal), Float.valueOf(comm));
 		if (empno != null && !"".equals(empno))
 			emp.setEmpno(Integer.valueOf(empno));
 		if (deptno != null && !"".equals(deptno)) {
@@ -74,7 +76,7 @@ public class FirmService {
 		return emp;
 	}
 
-	public void modifyEmp(HttpServletRequest request) {
+	public void modifyEmp(HttpServletRequest request) throws ParseException {
 		Emp emp = getEmpForScope(request);
 		empDao.update(emp);
 	}

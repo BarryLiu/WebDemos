@@ -9,9 +9,9 @@
 </head>
 <body>
 	<div align="center">
-		<h1>addEmp.jsp</h1>
+		<h1>modifyEmp.jsp</h1>
 		<br>
-		<form action="/firmAction.do?method=modify" method="post">
+		<form action="firmAction.do?method=modifyEmp" method="post">
 			<table border="1">
 				<tr>
 					<td>empno</td>
@@ -27,19 +27,19 @@
 				</tr>
 				<tr>
 					<td>mgr</td>
-					<td><input name="mgr" value="${emp.mgr }"  maxlength="14" onkeyup='this.value=this.value.replace(/\D/gi,"")'></td>
+					<td><input name="mgr" value="${emp.mgr }"  maxlength="14" onkeyup='this.value=this.value.replace(/\D/gi,"")'>Integer</td>
 				</tr>
 				<tr>
 					<td>hiredate</td>
-					<td><input name="hiredate" value="${emp.hiredate }"></td>
+					<td><input name="hiredate" value="${emp.hiredate }">yyyy-MM-dd</td>
 				</tr>
 				<tr>
 					<td>sal</td>
-					<td><input name="sal" type="number"  value="${emp.sal }"></td>
+					<td><input name="sal" type="number"  value="${emp.sal }">Number or Double</td>
 				</tr>
 				<tr>
 					<td>comm</td>
-					<td><input name="comm" type="number  value="${emp.comm }"></td>
+					<td><input name="comm" type="number  value="${emp.comm }">Number or Double</td>
 				</tr>
 				<tr>
 					<td>dept</td>

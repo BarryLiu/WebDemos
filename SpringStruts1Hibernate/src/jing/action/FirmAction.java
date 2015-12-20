@@ -15,7 +15,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 /**
- * ��˾Action
+ * ��˾Action
  * @author BarryLiu
  *
  */
@@ -25,32 +25,32 @@ public class FirmAction extends DispatchAction{
 		this.firmService = firmService;
 	}
 	
-
-	public ActionForward findAll(ActionMapping mapping, ActionForm form,
+	/**查询所有的员工*/
+	public ActionForward findAllEmp(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		List<Emp> emps=firmService.queryAllEmps();
 		request.setAttribute("emps", emps);
-		return mapping.findForward("list");
+		return mapping.findForward("listEmp");
 	}
 	 
-	public ActionForward remove(ActionMapping mapping, ActionForm form,
+	public ActionForward removeEmp(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String empno = request.getParameter("empno");
 		if(empno!=null)
 			firmService.removeEmp(Integer.parseInt(empno));
-		return findAll(mapping, form, request, response);
+		return findAllEmp(mapping, form, request, response);
 	}
-	public ActionForward toModify(ActionMapping mapping, ActionForm form,
+	public ActionForward toModifyEmp(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		List<Dept> depts=firmService.queryAllDepts();
 		request.setAttribute("depts", depts);
-		return mapping.findForward("modify");
+		return mapping.findForward("modifyEmp");
 	}
-	public ActionForward modify(ActionMapping mapping, ActionForm form,
+	public ActionForward modifyEmp(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		firmService.modifyEmp(request);
-		return findAll(mapping, form, request, response);
+		return findAllEmp(mapping, form, request, response);
 	}
 	
 	public ActionForward toAddEmp(ActionMapping mapping, ActionForm form,
@@ -64,9 +64,40 @@ public class FirmAction extends DispatchAction{
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		 firmService.addEmp(request);
 		
-		return findAll(mapping, form, request, response);
+		return findAllEmp(mapping, form, request, response);
 	}
 	
+	
+	
+	//=============================部门操作
+	
+	/**查询所有的员工*/
+	public ActionForward findAllDept(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		List<Dept> depts=firmService.queryAllDepts();
+		request.setAttribute("depts", depts);
+		return mapping.findForward("listDept");
+	}
+	
+	public ActionForward addDept(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		List<Dept> depts=firmService.queryAllDepts();
+		request.setAttribute("depts", depts);
+		return findAllDept(mapping, form, request, response);
+	}
+	public ActionForward modifyDept(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		List<Dept> depts=firmService.queryAllDepts();
+		request.setAttribute("depts", depts);
+		return findAllDept(mapping, form, request, response);
+	}
+	public ActionForward removeDept(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		List<Dept> depts=firmService.queryAllDepts();
+		request.setAttribute("depts", depts);
+		return findAllDept(mapping, form, request, response);
+	}
 	
 	
 	

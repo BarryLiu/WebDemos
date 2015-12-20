@@ -11,7 +11,7 @@
 	<div align="center">
 		<h1>addEmp.jsp</h1>
 		<br>
-		<form action="/firmAction.do?method=addEmp" method="post">
+		<form action="firmAction.do?method=addEmp" method="post">
 			<table border="1">
 				<tr>
 					<td>empno</td>
@@ -27,19 +27,19 @@
 				</tr>
 				<tr>
 					<td>mgr</td>
-					<td><input name="mgr" value=""  maxlength="14" onkeyup='this.value=this.value.replace(/\D/gi,"")'></td>
+					<td><input name="mgr" value=""  maxlength="14" onkeyup='this.value=this.value.replace(/\D/gi,"")'>Integer</td>
 				</tr>
 				<tr>
 					<td>hiredate</td>
-					<td><input name="hiredate" value=""></td>
+					<td><input name="hiredate" value="">yyyy-MM-dd</td>
 				</tr>
 				<tr>
 					<td>sal</td>
-					<td><input name="sal" type="number"  value=""></td>
+					<td><input name="sal" type="number"  value="">Number or Double</td>
 				</tr>
 				<tr>
 					<td>comm</td>
-					<td><input name="comm" type="number  value=""></td>
+					<td><input name="comm" type="number"  value="">Number or Double</td>
 				</tr>
 				<tr>
 					<td>dept</td>
