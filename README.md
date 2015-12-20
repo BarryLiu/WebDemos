@@ -8,12 +8,12 @@ Spring+Struts1+Hibernate
 -----------------------------------
 
 
-pic1[Image](https://github.com/BarryLiu/WebDemos/pic1.png)
-pic2[Image](https://github.com/BarryLiu/WebDemos/)
-pic3[Image](https://github.com/BarryLiu/WebDemos/)
-pic4[Image](https://github.com/BarryLiu/WebDemos/)
-pic5[Image](https://github.com/BarryLiu/WebDemos/)
-pic6[Image](https://github.com/BarryLiu/WebDemos/)
+pic1[Image](https://github.com/BarryLiu/WebDemos/SpringStruts1Hibernate/files/pic1.png)
+pic2[Image](https://github.com/BarryLiu/WebDemos/SpringStruts1Hibernate/files/pic2.png)
+pic3[Image](https://github.com/BarryLiu/WebDemos/SpringStruts1Hibernate/files/pic3.png)
+pic4[Image](https://github.com/BarryLiu/WebDemos/SpringStruts1Hibernate/files/pic4.png)
+pic5[Image](https://github.com/BarryLiu/WebDemos/SpringStruts1Hibernate/files/pic5.png)
+pic6[Image](https://github.com/BarryLiu/WebDemos/SpringStruts1Hibernate/files/pic6.png)
 
 * encoding: utf-8
 * Java&IDE: JDK8 Eclipse 
