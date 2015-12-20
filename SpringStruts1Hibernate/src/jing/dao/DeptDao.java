@@ -8,7 +8,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 /**
- *  ²éÑ¯²¿ÃÅ±í
+ *   æŸ¥è¯¢éƒ¨é—¨è¡¨
  * @author BarryLiu
  */
 public class DeptDao extends BaseDao<Dept>{

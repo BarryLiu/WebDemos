@@ -13,7 +13,7 @@ public class SessionFactoryUtils {
 		cfg.configure();
 		factory = cfg.buildSessionFactory();
 
-		// 可以写在ServletContextListener的销毁方法中
+		// 鍙互鍐欏湪ServletContextListener鐨勯攢姣佹柟娉曚腑
 		// factory.close();
 	}
 
@@ -22,7 +22,7 @@ public class SessionFactoryUtils {
 	}
 
 	public static Session getSession() {
-		// 每次调用都会创建一个新的session实例
+		//姣忔璋冪敤閮戒細鍒涘缓涓�涓柊鐨剆ession瀹炰緥
 		return factory.openSession();
 	}
 

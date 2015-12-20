@@ -8,6 +8,13 @@ Spring+Struts1+Hibernate
 -----------------------------------
 
 
+pic1[Image](https://github.com/BarryLiu/WebDemos/pic1.png)
+pic2[Image](https://github.com/BarryLiu/WebDemos/)
+pic3[Image](https://github.com/BarryLiu/WebDemos/)
+pic4[Image](https://github.com/BarryLiu/WebDemos/)
+pic5[Image](https://github.com/BarryLiu/WebDemos/)
+pic6[Image](https://github.com/BarryLiu/WebDemos/)
+
 * encoding: utf-8
 * Java&IDE: JDK8 Eclipse 
 * Backend:  Struts2.3.7 Spring3.1.1 Hibernate3.1  

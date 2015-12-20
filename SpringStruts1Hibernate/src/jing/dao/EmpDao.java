@@ -6,7 +6,11 @@ import jing.entity.Emp;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate3.HibernateTemplate;
-
+/**
+ * 查询员工表
+ * @author BarryLiu
+ *
+ */
 public class EmpDao extends BaseDao<Emp>{
 	public EmpDao() {
 		super(Emp.class);

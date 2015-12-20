@@ -17,7 +17,7 @@ public class Test {
 
 	// Statement
 	// PreparedStatement
-	// ºóÕß»á°ÑÔ¤±àÒëµÄSQL¶¼´æÆğÀ´£¬Ìá¹©¸øµ±´ÎConnectionµÄÏÂÒ»¸ö²Ù×÷Ê¹ÓÃ
+	// åè€…ä¼šæŠŠé¢„ç¼–è¯‘çš„SQLéƒ½å­˜èµ·æ¥ï¼Œæä¾›ç»™å½“æ¬¡Connectionçš„ä¸‹ä¸€ä¸ªæ“ä½œä½¿ç”¨
 	// insert into xxx values(?,?)
 
 	public static void test1() {
@@ -34,8 +34,8 @@ public class Test {
 		session.close();
 	}
 
-	// ²»ÄÜ±£Ö¤ÔÚ»º´æÖ®Ç°µÄÊı¾İÒÔºó
-	// ÆäËûÇëÇóÃ»ÓĞÏòÕâ¸ö±íÌí¼ÓĞÂµÄÊı¾İ
+	// ä¸èƒ½ä¿è¯åœ¨ç¼“å­˜ä¹‹å‰çš„æ•°æ®ä»¥å
+	// å…¶ä»–è¯·æ±‚æ²¡æœ‰å‘è¿™ä¸ªè¡¨æ·»åŠ æ–°çš„æ•°æ®
 	// select * from emp where empno=2
 	public static void test2() {
 		Session session = SessionFactoryUtils.getSession();

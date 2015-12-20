@@ -6,6 +6,14 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
+/**
+ * BaseDao 
+ * å®ç°äº†Hibernateå¯¹entityçš„ç®€å•æ“ä½œ ç»§æ‰¿Dao åªéœ€æŒ‡æ˜æ“ä½œçš„ç±»
+ * åªæ”¯æŒå¯¹å•ä¸ªè¡¨çš„æ“ä½œ
+ * @author BarryLiu
+ *
+ * @param <T>
+ */
 
 public class BaseDao<T> {
 	protected Class<T> objectClass;
@@ -19,7 +27,7 @@ public class BaseDao<T> {
 	}
 	
 	/**
-	 * ²éÑ¯È«²¿  
+	 * æŸ¥è¯¢å…¨éƒ¨  
 	 * @return
 	 */
 	public List<T> getAll() {
@@ -29,19 +37,19 @@ public class BaseDao<T> {
 	}
 
 	/**
-	 * ¸ù¾İ×Ô¶¨Òå  ¡°Hql¡± Óï¾ä    ·½Ê½ À´²éÑ¯  
-	 * @param hql   hql  Óï¾ä
-	 * @param pramas   sql Óï¾äÖĞ £¿¡¡µÄÖµ
+	 * æ ¹æ®è‡ªå®šä¹‰  â€œHqlâ€ è¯­å¥    æ–¹å¼ æ¥æŸ¥è¯¢  
+	 * @param hql   hql  è¯­å¥
+	 * @param pramas   sql è¯­å¥ä¸­ ï¼Ÿã€€çš„å€¼
 	 * @return
 	 */
 	public List<T> getByHql(String hql,String ...pramas ){
 		return template.find(hql, pramas);
 	}
 	/**
-	 * ¸ù¾İ×Ô¶¨Òå ¡°sql¡±  Óï¾ä   ·½Ê½ À´²éÑ¯     
-	 * @param sql  sql Óï¾ä
-	 * @param pramas   sql Óï¾äÖĞ £¿¡¡µÄÖµ¡¡¡¡
-	 * @return¡¡¡¡
+	 * æ ¹æ®è‡ªå®šä¹‰ â€œsqlâ€  è¯­å¥   æ–¹å¼ æ¥æŸ¥è¯¢     
+	 * @param sql  sql è¯­å¥
+	 * @param pramas   sql è¯­å¥ä¸­ ï¼Ÿã€€çš„å€¼ã€€ã€€
+	 * @returnã€€ã€€
 	 */
 	public List<Object[]> getBySql(String sql,String ... pramas){
 		
@@ -57,9 +65,9 @@ public class BaseDao<T> {
 	}
 	
 	/**
-	 *   ¸ù¾İid ²éÑ¯
-	 * @param sid ´«Èë Òª²éÑ¯µÄ¶ÔÏóµÄid
-	 * @return  Õâ¸ö¶ÔÏó
+	 *   æ ¹æ®id æŸ¥è¯¢
+	 * @param sid ä¼ å…¥ è¦æŸ¥è¯¢çš„å¯¹è±¡çš„id
+	 * @return  è¿™ä¸ªå¯¹è±¡
 	 */
 	public T getById(String sid) {
 		try{
@@ -70,21 +78,21 @@ public class BaseDao<T> {
 		}
 	}
 	/**
-	 *  ´«Èë¶ÔÏóĞŞ¸Ä£¨*¶ÔÏóÒªÓĞid£©   
+	 *  ä¼ å…¥å¯¹è±¡ä¿®æ”¹ï¼ˆ*å¯¹è±¡è¦æœ‰idï¼‰   
 	 * @param entity  
 	 */
 	public void update(T entity) {
 		template.update(entity);
 	}
 	/**
-	 * Ôö¼Ó Ò»Ìõ¼ÇÂ¼ £¨*ÒªÓĞid Öµ£©
+	 * å¢åŠ  ä¸€æ¡è®°å½• ï¼ˆ*è¦æœ‰id å€¼ï¼‰
 	 * @param entity
 	 */
 	public void save(T entity) {
 		template.save(entity);
 	}
 	/**
-	 * ¸ù¾İid É¾³ı
+	 * æ ¹æ®id åˆ é™¤
 	 * @param sid
 	 */
 	public void delete(String sid) {
@@ -92,15 +100,15 @@ public class BaseDao<T> {
 		template.delete(entity);
 	}
 	/**
-	 * ´«Èë¶ÔÏóÉ¾³ı 
+	 * ä¼ å…¥å¯¹è±¡åˆ é™¤ 
 	 * @param entity
 	 */
 	public void delete(T entity){
 		template.delete(entity);
 	}
 	/**
-	 * µÃµ½±í¼ÇÂ¼µÄÌõÊı 	HQL 
-	 * @param whereStr  Èç¹ûÓĞÌõ¼şµÄ»°  ´«Èë whereÌõ¼ş eg£º where  ......
+	 * å¾—åˆ°è¡¨è®°å½•çš„æ¡æ•° 	HQL 
+	 * @param whereStr  å¦‚æœæœ‰æ¡ä»¶çš„è¯  ä¼ å…¥ whereæ¡ä»¶ egï¼š where  ......
 	 * @return 
 	 */
 	public int getTotalCount(String whereStr) {

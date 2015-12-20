@@ -16,7 +16,7 @@ import jing.entity.Emp;
 import jing.form.FirmForm;
 
 /**
- * ��˾service
+ * 公司 service
  * 
  * @author BarryLiu
  */

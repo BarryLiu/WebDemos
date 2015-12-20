@@ -5,6 +5,11 @@ import jing.entity.Emp;
 
 import org.apache.struts.action.ActionForm;
 
+/**
+ * 用于Struts1传值    jsp——> Action   
+ * @author BarryLiu
+ *
+ */
 public class FirmForm extends ActionForm{
 	private Emp emp=new Emp();
 	private Dept dept=new Dept();

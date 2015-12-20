@@ -3,27 +3,36 @@ package jing.entity;
 import java.util.Set;
 
 /**
- * ����
+ * 部门
  * @author BarryLiu
  *
  */
 public class Dept {
 
-	/**���ű��	 */
+	/**部门编号	 */
 	private Integer deptno;
-	/**��������	*/
+	/**部门名称	*/
 	private String dname;
-	/**���ŵ�ַ	*/
+	/**部门地址	*/
 	private String loc;
 
-	// ��������
-	// ��ʾһ������ӵ�ж��Ա��
-	// �ڲ��ű��У���û���κ�һ��������Զ�Ӧ��
+	// 关联属性
+	// 表示一个部门拥有多个员工
+	// 在部门表中，是没有任何一列与该属性对应的
 	private Set<Emp> emps;
 
-	public Dept(){
-		
+	// dept.getEmps();
+
+	 
+
+	public Set<Emp> getEmps() {
+		return emps;
 	}
+
+	public Dept() {
+		super();
+	}
+
 	public Dept(Integer deptno, String dname, String loc) {
 		super();
 		this.deptno = deptno;
@@ -31,13 +40,7 @@ public class Dept {
 		this.loc = loc;
 	}
 
-	// dept.getEmps();
-
-	public Set<Emp> getEmps() {
-		return emps;
-	}
-
-	// ֻ����Լ������ԣ��������Բ�Ҫ���������
+	// 只输出自己的属性，关联属性不要输出！！！
 	@Override
 	public String toString() {
 		return "Dept [deptno=" + deptno + ", dname=" + dname + ", loc=" + loc

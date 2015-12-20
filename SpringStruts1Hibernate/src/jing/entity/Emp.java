@@ -3,25 +3,25 @@ package jing.entity;
 import java.util.Date;
 
 /**
- * Ô±¹¤±í
+ * å‘˜å·¥è¡¨
  * 
  * @author BarryLiu
  *
  */
 public class Emp {
-	/** Ô±¹¤±àºÅ */
+	/** å‘˜å·¥ç¼–å· */
 	private Integer empno;
-	/** Ô±¹¤Ãû³Æ */
+	/** å‘˜å·¥åç§° */
 	private String ename;
-	/** Ô±¹¤¹¤×÷ */
+	/** å‘˜å·¥å·¥ä½œ */
 	private String job;
-	/** ÉÏ¼¶±àºÅ */
+	/** ä¸Šçº§ç¼–å· */
 	private Integer mgr;
-	/** ¼ÓÈëÊ±¼ä */
+	/** åŠ å…¥æ—¶é—´ */
 	private Date hiredate;
-	/** ¹¤×Ê */
+	/** å·¥èµ„ */
 	private Float sal;
-	/** ½±½ğ */
+	/** å¥–é‡‘ */
 	private Float comm;
 
 	public Emp(Integer empno, String ename, String job, Integer mgr,
@@ -39,11 +39,11 @@ public class Emp {
 	public Emp() {
 	}
 
-	// ÓëEmp±íÖĞµÄÍâ¼ü¶ÔÓ¦:²¢²»ÊÇOOPµÄ±íÊ¾·½Ê½
+	// ä¸Empè¡¨ä¸­çš„å¤–é”®å¯¹åº”:å¹¶ä¸æ˜¯OOPçš„è¡¨ç¤ºæ–¹å¼
 	// private Integer deptno;
 
-	// OOPµÄ±íÊ¾·½Ê½£ºÕâÀïÓĞÒ»¸öÔ±¹¤ÓëÒ»¸ö²¿ÃÅ¶ÔÓ¦
-	// ¹ØÁªÊôĞÔ
+	// OOPçš„è¡¨ç¤ºæ–¹å¼ï¼šè¿™é‡Œæœ‰ä¸€ä¸ªå‘˜å·¥ä¸ä¸€ä¸ªéƒ¨é—¨å¯¹åº”
+	// å…³è”å±æ€§
 	private Dept dept;
 
 	@Override
@@ -126,11 +126,11 @@ public class Emp {
 	// }
 
 	public static void main(String[] args) {
-		// ÒÑ¾­»ñÈ¡µ½ÁËÒ»¸öEmpÊµÀı
+		// å·²ç»è·å–åˆ°äº†ä¸€ä¸ªEmpå®ä¾‹
 		Emp emp = new Emp();
-		// ²¢²»ÄÜ»ñÈ¡µ½Ò»¸öÍêÕûµÄ²¿ÃÅÊµÀı
+		// å¹¶ä¸èƒ½è·å–åˆ°ä¸€ä¸ªå®Œæ•´çš„éƒ¨é—¨å®ä¾‹
 		// emp.getDeptno();
-		// Hibernate»á×Ô¶¯²éÑ¯³öÕâ¸öÔ±¹¤¶ÔÓ¦µÄ²¿ÃÅĞÅÏ¢
+		// Hibernateä¼šè‡ªåŠ¨æŸ¥è¯¢å‡ºè¿™ä¸ªå‘˜å·¥å¯¹åº”çš„éƒ¨é—¨ä¿¡æ¯
 		emp.getDept();
 	}
 
