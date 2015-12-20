@@ -10,6 +10,7 @@
 <body>
 	<div align="center">
 		<h1>addDept.jsp</h1>
+			<a href="index.jsp">index.jsp</a><br>
 		<br>
 		<form action="firmAction.do?method=addDept" method="post">
 			<table border="1">
@@ -20,6 +21,10 @@
 				<tr>
 					<td>dname</td>
 					<td><input name="dname" value=""></td>
+				</tr>
+				<tr>
+					<td>loc</td>
+					<td><input name="loc" value=""></td>
 				</tr>
 				<tr align="center" >
 					<td colspan="2">

@@ -81,4 +81,51 @@ public class FirmService {
 		empDao.update(emp);
 	}
 
+	public Emp queryEmpByNo(String empno) {
+		if(empno==null)
+			return null;
+		return empDao.getById(empno);
+	}
+
+	public Dept queryDeptByNo(String deptno) {
+		if(deptno==null)
+			return null;
+		return deptDao.getById(deptno);
+	}
+
+	public void modifyDept(HttpServletRequest request) {
+		String deptno = request.getParameter("deptno");
+		String dname = request.getParameter("dname");
+		String loc = request.getParameter("loc");
+		
+		Dept dept =new Dept(Integer.valueOf(deptno), dname, loc);
+		deptDao.update(dept);
+	}
+
+	public String removeDept(HttpServletRequest request) {
+		String deptno = request.getParameter("deptno");
+		
+		Dept dept = deptDao.getById(deptno);
+		if(dept.getEmps().size()>0)
+			return "删除部门前要先删除部门下的员工";
+		deptDao.delete(deptno);
+		return "删除成功";
+	}
+
+	public void addDept(HttpServletRequest request) {
+		Dept dept = getDeptForScope(request);
+		deptDao.save(dept);
+	}
+
+	private Dept getDeptForScope(HttpServletRequest request) {
+		String deptno = request.getParameter("deptno");
+		String dname = request.getParameter("dname");
+		String loc = request.getParameter("loc");
+		Integer dno=null;
+		if(deptno!=null)
+			dno=Integer.valueOf(deptno);
+		Dept dept =new Dept(dno, dname, loc);
+		return dept;
+	}
+
 }

@@ -10,6 +10,7 @@
 <body>
 	<div align="center">
 		<h1>addEmp.jsp</h1>
+			<a href="index.jsp">index.jsp</a><br>
 		<br>
 		<form action="firmAction.do?method=addEmp" method="post">
 			<table border="1">

@@ -3,23 +3,33 @@ package jing.entity;
 import java.util.Set;
 
 /**
- * ²¿ÃÅ
+ * ï¿½ï¿½ï¿½ï¿½
  * @author BarryLiu
  *
  */
 public class Dept {
 
-	/**²¿ÃÅ±àºÅ	 */
+	/**ï¿½ï¿½ï¿½Å±ï¿½ï¿½	 */
 	private Integer deptno;
-	/**²¿ÃÅÃû³Æ	*/
+	/**ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	*/
 	private String dname;
-	/**²¿ÃÅµØÖ·	*/
+	/**ï¿½ï¿½ï¿½Åµï¿½Ö·	*/
 	private String loc;
 
-	// ¹ØÁªÊôÐÔ
-	// ±íÊ¾Ò»¸ö²¿ÃÅÓµÓÐ¶à¸öÔ±¹¤
-	// ÔÚ²¿ÃÅ±íÖÐ£¬ÊÇÃ»ÓÐÈÎºÎÒ»ÁÐÓë¸ÃÊôÐÔ¶ÔÓ¦µÄ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ï¿½ï¿½Ê¾Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½Ð¶ï¿½ï¿½Ô±ï¿½ï¿½
+	// ï¿½Ú²ï¿½ï¿½Å±ï¿½ï¿½Ð£ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Îºï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½Ó¦ï¿½ï¿½
 	private Set<Emp> emps;
+
+	public Dept(){
+		
+	}
+	public Dept(Integer deptno, String dname, String loc) {
+		super();
+		this.deptno = deptno;
+		this.dname = dname;
+		this.loc = loc;
+	}
 
 	// dept.getEmps();
 
@@ -27,7 +37,7 @@ public class Dept {
 		return emps;
 	}
 
-	// Ö»Êä³ö×Ô¼ºµÄÊôÐÔ£¬¹ØÁªÊôÐÔ²»ÒªÊä³ö£¡£¡£¡
+	// Ö»ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public String toString() {
 		return "Dept [deptno=" + deptno + ", dname=" + dname + ", loc=" + loc

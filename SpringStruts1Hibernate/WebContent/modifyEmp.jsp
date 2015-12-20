@@ -10,6 +10,7 @@
 <body>
 	<div align="center">
 		<h1>modifyEmp.jsp</h1>
+			<a href="index.jsp">index.jsp</a><br>
 		<br>
 		<form action="firmAction.do?method=modifyEmp" method="post">
 			<table border="1">
@@ -39,7 +40,7 @@
 				</tr>
 				<tr>
 					<td>comm</td>
-					<td><input name="comm" type="number  value="${emp.comm }">Number or Double</td>
+					<td><input name="comm" type="number"  value="${emp.comm }">Number or Double</td>
 				</tr>
 				<tr>
 					<td>dept</td>

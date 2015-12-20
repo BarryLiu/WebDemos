@@ -15,7 +15,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 /**
- * ��˾Action
+ * 部门
  * @author BarryLiu
  *
  */
@@ -44,7 +44,9 @@ public class FirmAction extends DispatchAction{
 	public ActionForward toModifyEmp(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		List<Dept> depts=firmService.queryAllDepts();
+		Emp emp=firmService.queryEmpByNo(request.getParameter("empno"));
 		request.setAttribute("depts", depts);
+		request.setAttribute("emp", emp);
 		return mapping.findForward("modifyEmp");
 	}
 	public ActionForward modifyEmp(ActionMapping mapping, ActionForm form,
@@ -82,20 +84,25 @@ public class FirmAction extends DispatchAction{
 	
 	public ActionForward addDept(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		List<Dept> depts=firmService.queryAllDepts();
-		request.setAttribute("depts", depts);
+		firmService.addDept(request); 
+		
 		return findAllDept(mapping, form, request, response);
+	}
+	public ActionForward toModifyDept(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Dept dept =firmService.queryDeptByNo(request.getParameter("deptno"));
+		request.setAttribute("dept", dept);
+		return mapping.findForward("modifyDept");
 	}
 	public ActionForward modifyDept(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		List<Dept> depts=firmService.queryAllDepts();
-		request.setAttribute("depts", depts);
+		firmService.modifyDept(request);
 		return findAllDept(mapping, form, request, response);
 	}
 	public ActionForward removeDept(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		List<Dept> depts=firmService.queryAllDepts();
-		request.setAttribute("depts", depts);
+		String delDeptMsg = firmService.removeDept(request);
+		request.setAttribute("delDeptMsg", delDeptMsg);
 		return findAllDept(mapping, form, request, response);
 	}
 	

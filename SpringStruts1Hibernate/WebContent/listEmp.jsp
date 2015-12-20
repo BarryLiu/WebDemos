@@ -10,9 +10,10 @@
 <body>
 	<div align="center">
 		<h1>list.jsp</h1>
-		<h6>
-			<a href="firmAction.do?method=toAddEmp">add Emp</a>
-		</h6>
+		<h4>
+			<a href="index.jsp">index.jsp</a><br>
+			<a href="firmAction.do?method=toAddEmp">add Emp</a><br>
+		</h4>
 		<br>
 		<table border="1">
 			<tr>

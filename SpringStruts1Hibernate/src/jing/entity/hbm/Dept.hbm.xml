@@ -26,7 +26,7 @@
 		<!-- select * from emp where deptno=10 -->
 
 		<!-- <set name="emps" lazy="false"> -->
-		<set name="emps">
+		<set name="emps" lazy="false">
 			<!-- 对方(Emp)用来关联我(Dept)的外键列名 -->
 			<key column="deptno"></key>
 			<!-- 关联属性的类型名称 -->

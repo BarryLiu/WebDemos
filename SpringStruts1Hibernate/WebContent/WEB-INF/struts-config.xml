@@ -11,6 +11,7 @@
 			
 			<forward name="listDept" path="/listDept.jsp"></forward>
 			<forward name="addDept" path="/addDept.jsp"></forward>
+			<forward name="modifyDept" path="/modifyDept.jsp"></forward>
 		</action>
 	</action-mappings>
 

@@ -10,9 +10,11 @@
 <body>
 	<div align="center">
 		<h1>listDept.jsp</h1>
-		<h6>
-			<a href="firmAction.do?method=toAddDept">add Dept</a>
-		</h6>
+		<h4>
+			<a href="index.jsp">index.jsp</a><br>
+			<a href="addDept.jsp">add Dept</a>
+			<span>${delDeptMsg }</span>
+		</h4>
 		<br>
 		<table border="1">
 			<tr>
@@ -26,7 +28,7 @@
 					<td>${d.dname }</td>
 					<td>
 						<a href="firmAction.do?method=toModifyDept&deptno=${d.deptno}">修改</a>
-						<a href="firmAction.do?method=removeDept&deptno=${e.deptno}">删除</a>
+						<a href="firmAction.do?method=removeDept&deptno=${d.deptno}">删除</a>
 					</td>
 				</tr>				
 			</c:forEach>
