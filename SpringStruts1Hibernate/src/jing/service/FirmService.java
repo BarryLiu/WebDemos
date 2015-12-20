@@ -7,10 +7,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.struts.action.ActionForm;
+
 import jing.dao.DeptDao;
 import jing.dao.EmpDao;
 import jing.entity.Dept;
 import jing.entity.Emp;
+import jing.form.FirmForm;
 
 /**
  * ��˾service
@@ -50,9 +53,13 @@ public class FirmService {
 		return deptDao.getAll();
 	}
 
-	public void addEmp(HttpServletRequest request) throws ParseException {
-		Emp emp = getEmpForScope(request);
-		empDao.save(emp);
+	public void addEmp(HttpServletRequest request,FirmForm firm) throws ParseException {
+		System.out.println("firm:"+firm);
+		
+		Date date=new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("hiredate"));
+		firm.getEmp().setHiredate(date);
+		//Emp emp = getEmpForScope(request);
+		empDao.save(firm.getEmp());
 	}
 
 	private Emp getEmpForScope(HttpServletRequest request) throws ParseException {
@@ -106,9 +113,11 @@ public class FirmService {
 		String deptno = request.getParameter("deptno");
 		
 		Dept dept = deptDao.getById(deptno);
+		if(dept==null)
+			return "没有该部门";
 		if(dept.getEmps().size()>0)
 			return "删除部门前要先删除部门下的员工";
-		deptDao.delete(deptno);
+		deptDao.delete(dept);
 		return "删除成功";
 	}
 

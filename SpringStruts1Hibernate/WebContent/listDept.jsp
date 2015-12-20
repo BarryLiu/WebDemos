@@ -12,8 +12,8 @@
 		<h1>listDept.jsp</h1>
 		<h4>
 			<a href="index.jsp">index.jsp</a><br>
-			<a href="addDept.jsp">add Dept</a>
-			<span>${delDeptMsg }</span>
+			<a href="addDept.jsp">add Dept</a><br><br>
+			<span style="color: red">${delDeptMsg }</span>
 		</h4>
 		<br>
 		<table border="1">

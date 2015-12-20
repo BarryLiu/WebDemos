@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import jing.entity.Dept;
 import jing.entity.Emp;
+import jing.form.FirmForm;
 import jing.service.FirmService;
 
 import org.apache.struts.action.ActionForm;
@@ -64,7 +65,8 @@ public class FirmAction extends DispatchAction{
 	
 	public ActionForward addEmp(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		 firmService.addEmp(request);
+		FirmForm firm=(FirmForm) form;
+		 firmService.addEmp(request,firm);
 		
 		return findAllEmp(mapping, form, request, response);
 	}

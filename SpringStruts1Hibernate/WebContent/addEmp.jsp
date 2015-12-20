@@ -20,15 +20,15 @@
 				</tr>
 				<tr>
 					<td>ename</td>
-					<td><input name="ename" value=""></td>
+					<td><input name="emp.ename" value=""></td>
 				</tr>
 				<tr>
 					<td>job</td>
-					<td><input name="job" value=""></td>
+					<td><input name="emp.job" value=""></td>
 				</tr>
 				<tr>
 					<td>mgr</td>
-					<td><input name="mgr" value=""  maxlength="14" onkeyup='this.value=this.value.replace(/\D/gi,"")'>Integer</td>
+					<td><input name="emp.mgr" value=""  maxlength="14" onkeyup='this.value=this.value.replace(/\D/gi,"")'>Integer</td>
 				</tr>
 				<tr>
 					<td>hiredate</td>
@@ -36,11 +36,11 @@
 				</tr>
 				<tr>
 					<td>sal</td>
-					<td><input name="sal" type="number"  value="">Number or Double</td>
+					<td><input name="emp.sal" type="number"  value="">Number or Double</td>
 				</tr>
 				<tr>
 					<td>comm</td>
-					<td><input name="comm" type="number"  value="">Number or Double</td>
+					<td><input name="emp.comm" type="number"  value="">Number or Double</td>
 				</tr>
 				<tr>
 					<td>dept</td>
