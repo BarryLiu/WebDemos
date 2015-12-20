@@ -1,14 +1,15 @@
-Spring+Struts2+MyBatis(Y2_HR)
+SpringMVCAndMyBatis
 ============
-* encoding: gbk
-* Java&IDE: JDK7 Eclipse 
-* Backend:  Struts2.3.7 Spring3.1.1 MyBatis3.3.0 (Configured by mapper)
-* Frontend: JQuery-EasyUI1.4 Javascript JQuery Ajax
+A There are cases of excision operations to the user table
+-----------------------------------
+* encoding: utf-8 
+* Java&IDE: JDK8 Eclipse 
+* Backend:  Spring3.1.1 MyBatis3.3.0 (Configured by mapper)
 * Database: Mysql6.3
 * Web Server: Tomcat 7
 * Build Tool: none
 * Windows: in10
-* Other: jxl dom4j itext POI C3P0  Log4j 
+* Other:  
 ---------
 
 sAbout
