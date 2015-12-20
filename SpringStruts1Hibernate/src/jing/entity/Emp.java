@@ -4,24 +4,40 @@ import java.util.Date;
 
 /**
  * 员工表
+ * 
  * @author BarryLiu
  *
  */
 public class Emp {
-	/**员工编号	*/
+	/** 员工编号 */
 	private Integer empno;
-	/**员工名称	*/
+	/** 员工名称 */
 	private String ename;
-	/**员工工作	*/
+	/** 员工工作 */
 	private String job;
-	/**上级编号	*/
+	/** 上级编号 */
 	private Integer mgr;
-	/**加入时间	*/
+	/** 加入时间 */
 	private Date hiredate;
-	/**工资 		*/
+	/** 工资 */
 	private Float sal;
-	/**奖金		*/
+	/** 奖金 */
 	private Float comm;
+
+	public Emp(Integer empno, String ename, String job, Integer mgr,
+			Date hiredate, Float sal, Float comm) {
+		super();
+		this.empno = empno;
+		this.ename = ename;
+		this.job = job;
+		this.mgr = mgr;
+		this.hiredate = hiredate;
+		this.sal = sal;
+		this.comm = comm;
+	}
+
+	public Emp() {
+	}
 
 	// 与Emp表中的外键对应:并不是OOP的表示方式
 	// private Integer deptno;

@@ -11,14 +11,15 @@
 	http://www.springframework.org/schema/tx/spring-tx-3.1.xsd ">
 
 	<!-- 配置数据源 -->
-	<!-- 主要是给应用程序提供连接 -->
+	<!-- 主要是给应用程序提供连接    c3p0数据源-->
 	<bean id="ds" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="jdbcUrl" value="jdbc:mysql:///test"></property>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost/test"></property>
 		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
 		<property name="user" value="root"></property>
 		<property name="password" value="root"></property>
 	</bean>
-
+	
+	<!--  dbcp数据源 -->
 	<!-- <bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"> -->
 	<!-- <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"></property> -->
 	<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property> -->
@@ -50,21 +51,22 @@
 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-
-	<bean id="deptDao" class="jing.dao.DeptDao">
-		<!-- <property name="factory" ref="sessionFactory"></property> -->
+	
+		
+	<bean id="baseDao" class="jing.dao.BaseDao">
 		<property name="template" ref="hibernateTemplate"></property>
 	</bean>
-	<bean id="empDao" class="jing.dao.EmpDao">
-		<property name="template" ref="hibernateTemplate"></property>
-	</bean>
-
+		
+	<bean id="empDao" class="jing.dao.EmpDao" parent="baseDao"></bean>
+	<bean id="deptDao" class="jing.dao.DeptDao" parent="baseDao"></bean>
+	
+	
 	<bean id="firmService" class="jing.service.FirmService">
 		<property name="deptDao" ref="deptDao"></property>
 		<property name="empDao" ref="empDao"></property>
 	</bean>
 
-	<bean name="/deptAction" class="jing.action.FirmAction">
+	<bean name="/firmAction " class="jing.action.FirmAction">
 		<property name="firmService" ref="firmService"></property>
 	</bean>
 
@@ -96,7 +98,5 @@
 		<aop:advisor advice-ref="adv1"
 			pointcut="execution(* jing.service.*Service.*(..))" />
 
-		<aop:advisor advice-ref="adv1"
-			pointcut="execution(* jing.action.DeptAction2.*(..))" />
 	</aop:config>
 </beans>

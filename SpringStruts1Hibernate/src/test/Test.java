@@ -69,10 +69,11 @@ public class Test {
 	public static void main(String[] args) {
 //		test1();
 //		test1();
-		SessionFactory factory = SessionFactoryUtils.getSessionFactory();
-		System.out.println(factory);
+		//SessionFactory factory = SessionFactoryUtils.getSessionFactory();
+		//System.out.println(factory);
 //		Statistics statistics = factory.getStatistics();
 //		System.out.println(statistics);
+		Integer.parseInt(null);
 
 	}
 

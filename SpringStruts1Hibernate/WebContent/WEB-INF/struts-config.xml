@@ -4,8 +4,9 @@
 	<action-mappings>
 		<!-- 当Struts框架接受到一个请求，路径与path对应上了，找谁处理 -->
 		<!-- 根据path到Spring上下文找对应 的Bean的name -->
-		<action path="/firmAction" parameter="method">
+		<action path="/firmAction" parameter="method" >
 			<forward name="list" path="/list.jsp"></forward>
+			<forward name="addEmp" path="/addEmp.jsp"></forward>
 		</action>
 	</action-mappings>
 

@@ -3,11 +3,17 @@
 <hibernate-mapping package="jing.entity">
 
 	<class name="Dept">
-		<id name="deptno">
-			<generator class="sequence">
+	    <!--Mysql 数据库id  -->
+		<id name="deptno" column="deptno" type="int">
+			<generator  class="increment"/>
+		</id>
+		
+		<!--Oracle 数据库id  -->
+		<!-- <id name="deptno">
+			<generator  class="increment">
 				<param name="sequence">seq_dept</param>
 			</generator>
-		</id>
+		</id> -->
 		<property name="dname"></property>
 		<property name="loc"></property>
 

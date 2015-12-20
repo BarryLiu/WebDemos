@@ -9,7 +9,7 @@
 <body>
 	<div align="center">
 		<h1>index.jsp</h1>
-		<h3><a href="">Query Emp List!</a></h3>
+		<h3><a href="firmAction.do?method=findAll">Query Emp List!</a></h3>
 	</div>
 </body>
 </html>
