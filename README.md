@@ -1,4 +1,4 @@
-Spring+Struts2+Hibernate
+SpringMVC+Hibernate
 ================
 
   	For employees, departments a deletion cases instead of a one-to-many relationship
@@ -9,7 +9,7 @@ Spring+Struts2+Hibernate
 
 * encoding: utf-8
 * Java&IDE: JDK8 Eclipse 
-* Backend:  Struts2.3.7 Spring3.1.1 Hibernate3.1  
+* Backend:  Spring3.1.1 Hibernate3.1  
 * Database: Mysql6.3
 * Web Server: Tomcat 7
 * Build Tool: none

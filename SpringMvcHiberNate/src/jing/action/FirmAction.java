@@ -36,27 +36,27 @@ public class FirmAction {
 
 	/** 删除员工 */
 	@RequestMapping("/removeEmp")
-	public String removeEmp(HttpServletRequest request) throws Exception {
-		String empno = request.getParameter("empno");
-		if (empno != null)
+	public String removeEmp(Emp emp,HttpServletRequest request) throws Exception {
+		String empno = emp.getEmpno()+"";
+		if (empno != null&&!"".equals(empno))
 			firmService.removeEmp(Integer.parseInt(empno));
 		return findAllEmp(request);
 	}
 
 	/** 跳到修改员工,查询所有部门 */
 	@RequestMapping("/toModifyEmp")
-	public String toModifyEmp(HttpServletRequest request) throws Exception {
+	public String toModifyEmp(ModelMap map,Emp e) throws Exception {
 		List<Dept> depts = firmService.queryAllDepts();
-		Emp emp = firmService.queryEmpByNo(request.getParameter("empno"));
-		request.setAttribute("depts", depts);
-		request.setAttribute("emp", emp);
+		Emp emp = firmService.queryEmpByNo(e.getEmpno()+"");
+		map.put("emp", emp);
+		map.put("depts", depts);
 		return "/modifyEmp.jsp";
 	}
 
 	/** 修改员工 */
 	@RequestMapping("/modifyEmp")
-	public String modifyEmp(HttpServletRequest request) throws Exception {
-		firmService.modifyEmp(request);
+	public String modifyEmp(Emp emp,HttpServletRequest request) throws Exception {
+		firmService.modifyEmp(emp);
 		return findAllEmp(request);
 	}
 
@@ -70,9 +70,8 @@ public class FirmAction {
 
 	/** 跳到添加部门 */
 	@RequestMapping("/addEmp")
-	public String addEmp(HttpServletRequest request) throws Exception {
-//		firmService.addEmp(request,  );
-
+	public String addEmp(Emp emp,HttpServletRequest request) throws Exception {
+		firmService.addEmp(emp,request);
 		return findAllEmp(request);
 	}
 
@@ -88,31 +87,31 @@ public class FirmAction {
 
 	/** 添加部门 */
 	@RequestMapping("/addDept")
-	public String addDept(HttpServletRequest request) throws Exception {
-		firmService.addDept(request);
+	public String addDept(Dept dept,HttpServletRequest request) throws Exception {
+		firmService.addDept(dept);
 
 		return findAllDept(request);
 	}
 
 	/** 跳到修改部门页面 */
 	@RequestMapping("/toModifyDept")
-	public String toModifyDept(HttpServletRequest request) throws Exception {
-		Dept dept = firmService.queryDeptByNo(request.getParameter("deptno"));
-		request.setAttribute("dept", dept);
+	public String toModifyDept(Dept d,HttpServletRequest request,ModelMap map) throws Exception {
+		Dept dept = firmService.queryDeptByNo(d.getDeptno()+"");
+		map.put("dept", dept);
 		return "/modifyDept.jsp";
 	}
 
 	/** 修改部门 */
 	@RequestMapping("/modifyDept")
-	public String modifyDept(HttpServletRequest request) throws Exception {
-		firmService.modifyDept(request);
+	public String modifyDept(Dept dept,HttpServletRequest request) throws Exception {
+		firmService.modifyDept(dept);
 		return findAllDept(request);
 	}
 
 	/** 删除部门 */
 	@RequestMapping("/removeDept")
-	public String removeDept(HttpServletRequest request) throws Exception {
-		String delDeptMsg = firmService.removeDept(request);
+	public String removeDept(Dept dept,HttpServletRequest request) throws Exception {
+		String delDeptMsg = firmService.removeDept(dept.getDeptno());
 		request.setAttribute("delDeptMsg", delDeptMsg);
 		return findAllDept(request);
 	}

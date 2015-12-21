@@ -10,9 +10,9 @@
 <body>
 	<div align="center">
 		<h1>addDept.jsp</h1>
-			<a href="index.jsp">index.jsp</a><br>
+			<a href="/SpringMvcHiberNate/index.jsp">index.jsp</a><br>
 		<br>
-		<form action="firm/addDept" method="post">
+		<form action="/SpringMvcHiberNate/firm/addDept" method="post">
 			<table border="1">
 				<tr>
 					<td>deptno</td>

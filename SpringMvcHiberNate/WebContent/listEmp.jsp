@@ -11,8 +11,8 @@
 	<div align="center">
 		<h1>list.jsp</h1>
 		<h4>
-			<a href="index.jsp">index.jsp</a><br>
-			<a href="firm/toAddEmp">add Emp</a><br>
+			<a href="/SpringMvcHiberNate/index.jsp">index.jsp</a><br>
+			<a href="/SpringMvcHiberNate/firm/toAddEmp">add Emp</a><br>
 		</h4>
 		<br>
 		<table border="1">
@@ -30,8 +30,8 @@
 					<td>${e.sal }</td>
 					<td>${e.dept.dname }</td>
 					<td>
-						<a href="firm/toModifyEmp?empno=${e.empno}">修改</a>
-						<a href="firm/removeEmp?empno=${e.empno}">删除</a>
+						<a href="/SpringMvcHiberNate/firm/toModifyEmp?empno=${e.empno}">修改</a>
+						<a href="/SpringMvcHiberNate/firm/removeEmp?empno=${e.empno}">删除</a>
 					</td>
 				</tr>				
 			</c:forEach>

@@ -9,8 +9,8 @@
 <body>
 	<div align="center">
 		<h1>index.jsp</h1>
-		<h3><a href="firm/findAllEmp">Query Emp List!</a></h3>
-		<h3><a href="firm/findAllDept">Query Dept List!</a></h3>
+		<h3><a href="/SpringMvcHiberNate/firm/findAllEmp">Query Emp List!</a></h3>
+		<h3><a href="/SpringMvcHiberNate/firm/findAllDept">Query Dept List!</a></h3>
 	</div>
 </body>
 </html>

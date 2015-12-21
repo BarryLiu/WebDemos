@@ -56,35 +56,14 @@ public class FirmService {
 		return deptDao.getAll();
 	}
 
-	public void addEmp(HttpServletRequest request) throws ParseException {
-		
-		Date date=new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("hiredate"));
-		//Emp emp = getEmpForScope(request);
-	}
-
-	private Emp getEmpForScope(HttpServletRequest request) throws ParseException {
-		String empno = request.getParameter("empno");
-		String ename = request.getParameter("ename");
-		String job = request.getParameter("job");
-		String mgr = request.getParameter("mgr");
-		String hiredate = request.getParameter("hiredate");
-		String sal = request.getParameter("sal");
-		String comm = request.getParameter("comm");
+	public void addEmp(Emp emp,HttpServletRequest request) throws ParseException {
 		String deptno = request.getParameter("deptno");
-		
-		Date date=new SimpleDateFormat("yyyy-MM-dd").parse(hiredate);
-		Emp emp = new Emp(null, ename, job, Integer.valueOf(mgr), date, Float.valueOf(sal), Float.valueOf(comm));
-		if (empno != null && !"".equals(empno))
-			emp.setEmpno(Integer.valueOf(empno));
-		if (deptno != null && !"".equals(deptno)) {
-			Dept dept = deptDao.getById(deptno);
-			emp.setDept(dept);
-		}
-		return emp;
+		Dept dept = deptDao.getById(deptno);
+		emp.setDept(dept);
+		empDao.save(emp);
 	}
 
-	public void modifyEmp(HttpServletRequest request) throws ParseException {
-		Emp emp = getEmpForScope(request);
+	public void modifyEmp(Emp emp) throws ParseException {
 		empDao.update(emp);
 	}
 
@@ -100,19 +79,13 @@ public class FirmService {
 		return deptDao.getById(deptno);
 	}
 
-	public void modifyDept(HttpServletRequest request) {
-		String deptno = request.getParameter("deptno");
-		String dname = request.getParameter("dname");
-		String loc = request.getParameter("loc");
-		
-		Dept dept =new Dept(Integer.valueOf(deptno), dname, loc);
+	public void modifyDept(Dept dept) {
 		deptDao.update(dept);
 	}
 
-	public String removeDept(HttpServletRequest request) {
-		String deptno = request.getParameter("deptno");
+	public String removeDept(Integer dno) {
 		
-		Dept dept = deptDao.getById(deptno);
+		Dept dept = deptDao.getById(dno+"");
 		if(dept==null)
 			return "没有该部门";
 		if(dept.getEmps().size()>0)
@@ -121,8 +94,8 @@ public class FirmService {
 		return "删除成功";
 	}
 
-	public void addDept(HttpServletRequest request) {
-		Dept dept = getDeptForScope(request);
+	public void addDept(Dept dept) {
+//		Dept dept = getDeptForScope(request);
 		deptDao.save(dept);
 	}
 

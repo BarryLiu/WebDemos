@@ -11,8 +11,8 @@
 	<div align="center">
 		<h1>listDept.jsp</h1>
 		<h4>
-			<a href="index.jsp">index.jsp</a><br>
-			<a href="addDept.jsp">add Dept</a><br><br>
+			<a href="/SpringMvcHiberNate/index.jsp">index.jsp</a><br>
+			<a href="/SpringMvcHiberNate/addDept.jsp">add Dept</a><br><br>
 			<span style="color: red">${delDeptMsg }</span>
 		</h4>
 		<br>
@@ -27,8 +27,8 @@
 					<td>${d.deptno}</td>
 					<td>${d.dname }</td>
 					<td>
-						<a href="firm/toModifyDept&deptno=${d.deptno}">修改</a>
-						<a href="firm/removeDept&deptno=${d.deptno}">删除</a>
+						<a href="/SpringMvcHiberNate/firm/toModifyDept?deptno=${d.deptno}">修改</a>
+						<a href="/SpringMvcHiberNate/firm/removeDept?deptno=${d.deptno}">删除</a>
 					</td>
 				</tr>				
 			</c:forEach>

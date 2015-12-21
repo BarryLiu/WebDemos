@@ -10,9 +10,9 @@
 <body>
 	<div align="center">
 		<h1>addEmp.jsp</h1>
-			<a href="index.jsp">index.jsp</a><br>
+			<a href="/SpringMvcHiberNate/index.jsp">index.jsp</a><br>
 		<br>
-		<form action="firm/addEmp" method="post">
+		<form action="/SpringMvcHiberNate/firm/addEmp" method="post">
 			<table border="1">
 				<tr>
 					<td>empno</td>
@@ -20,27 +20,27 @@
 				</tr>
 				<tr>
 					<td>ename</td>
-					<td><input name="emp.ename" value=""></td>
+					<td><input name="ename" value=""></td>
 				</tr>
 				<tr>
 					<td>job</td>
-					<td><input name="emp.job" value=""></td>
+					<td><input name="job" value=""></td>
 				</tr>
 				<tr>
 					<td>mgr</td>
-					<td><input name="emp.mgr" value=""  maxlength="14" onkeyup='this.value=this.value.replace(/\D/gi,"")'>Integer</td>
+					<td><input name="mgr" value=""  maxlength="14" onkeyup='this.value=this.value.replace(/\D/gi,"")'>Integer</td>
 				</tr>
 				<tr>
 					<td>hiredate</td>
-					<td><input name="hiredate" value="">yyyy-MM-dd</td>
+					<td><input name="hiredate" value="">yyyy/MM/dd</td>
 				</tr>
 				<tr>
 					<td>sal</td>
-					<td><input name="emp.sal" type="number"  value="">Number or Double</td>
+					<td><input name="sal" type="number"  value="">Number or Double</td>
 				</tr>
 				<tr>
 					<td>comm</td>
-					<td><input name="emp.comm" type="number"  value="">Number or Double</td>
+					<td><input name="comm" type="number"  value="">Number or Double</td>
 				</tr>
 				<tr>
 					<td>dept</td>

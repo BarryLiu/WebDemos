@@ -10,9 +10,9 @@
 <body>
 	<div align="center">
 		<h1>modifyEmp.jsp</h1>
-			<a href="index.jsp">index.jsp</a><br>
+			<a href="/SpringMvcHiberNate/index.jsp">index.jsp</a><br>
 		<br>
-		<form action="firm/modifyEmp" method="post">
+		<form action="/SpringMvcHiberNate/firm/modifyEmp" method="post">
 			<table border="1">
 				<tr>
 					<td>empno</td>
@@ -32,7 +32,7 @@
 				</tr>
 				<tr>
 					<td>hiredate</td>
-					<td><input name="hiredate" value="${emp.hiredate }">yyyy-MM-dd</td>
+					<td><input name="hiredate" value="${emp.hiredate }">yyyy/MM/dd</td>
 				</tr>
 				<tr>
 					<td>sal</td>
