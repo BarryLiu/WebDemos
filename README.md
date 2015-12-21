@@ -13,7 +13,7 @@ Spring+Struts2+Hibernate
 * Database: Mysql6.3
 * Web Server: Tomcat 7
 * Build Tool: none
-* Windows: in10 
+* Windows: win10 
 ---------
 
 sAbout

@@ -12,7 +12,7 @@
 		<h1>modifyDept.jsp</h1>
 			<a href="index.jsp">index.jsp</a><br>
 		<br>
-		<form action="firmAction.do?method=modifyDept" method="post">
+		<form action="firmAction!modifyDept" method="post">
 			<table border="1">
 				<tr>
 					<td>deptno</td>

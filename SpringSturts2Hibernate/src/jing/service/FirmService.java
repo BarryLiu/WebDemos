@@ -131,4 +131,21 @@ public class FirmService {
 		return dept;
 	}
 
+	public String toLoadEmps(HttpServletRequest request) {
+		String deptno = request.getParameter("deptno");
+		Dept dept = deptDao.getById(deptno);
+		System.out.println("deptno:"+deptno+dept);
+		if(dept==null)
+			return "没有该部门";
+		if(dept.getEmps().size()==0)
+			return "该部门没有员工";
+		
+		StringBuffer sb=new StringBuffer();
+		for (Emp emp : dept.getEmps()) {
+			sb.append("ename="+emp.getEname()+",");
+		}
+		String str = sb.toString();
+		return str.substring(0,sb.length()-1);
+	}
+
 }

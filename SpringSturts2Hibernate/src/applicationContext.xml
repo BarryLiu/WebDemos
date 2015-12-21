@@ -1,75 +1,104 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-	 http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-	  ">
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-3.1.xsd ">
+ 
+ 	<!-- 启用AOP功能 -->        
+  	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>    
+    
+	<!-- 配置数据源 -->
+	<!-- 主要是给应用程序提供连接    c3p0数据源-->
 	<bean id="ds" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="jdbcUrl" value="jdbc:mysql://localhost/hr_db"></property>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost/test"></property>
 		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
 		<property name="user" value="root"></property>
 		<property name="password" value="root"></property>
 	</bean>
-	 
-	 <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-	 	<property name="dataSource" ref="ds"></property>
-	 	<property name="mapperLocations">
-	 		<list>
-	 			<value>classpath:hr/entity/mapper/*.xml</value>
-	 		</list>
-	 	</property>
-	 </bean>
+	
+	<!--  dbcp数据源 -->
+	<!-- <bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"> -->
+	<!-- <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"></property> -->
+	<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property> -->
+	<!-- <property name="username" value="scott"></property> -->
+	<!-- <property name="password" value="tiger"></property> -->
+	<!-- </bean> -->
 
-	 <bean id="template" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" ref="sessionFactory"></constructor-arg>
+	<!-- 配置SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- JDBC四要素 -->
+		<property name="dataSource" ref="ds"></property>
+
+		<!-- 配置Hibernate运行时自身需要的一些属性 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:jing/entity/hbm/*.hbm.xml</value>
+			</list>
+		</property>
 	</bean>
-	<bean id="baseDao" class="hr.dao.BaseDao" abstract="true">
-		<property name="template" ref="template" />
+
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	
-	<!-- 配置mapper 的id   以类名为spring 的id -->
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">	    
-	    <property name="basePackage" value="hr/mapperdao"></property>
-	    <property name="sqlSessionTemplateBeanName" value="template"></property>
-	</bean>
-	
-	
-	<!-- baseService  -->
-	<bean id="baseService" class="hr.service.BaseService">
-	    <property name="bonusMapper" ref="bonusMapper"></property>
-	    <property name="configFileFirstKindMapper" ref="configFileFirstKindMapper"></property>
-	    <property name="configFileSecondKindMapper" ref="configFileSecondKindMapper"></property>
-	    <property name="configFileThirdKindMapper" ref="configFileThirdKindMapper"></property>
-	    <property name="configMajorKindMapper" ref="configMajorKindMapper"></property>
-	    <property name="configMajorMapper" ref="configMajorMapper"></property>
-	    <property name="configPrimaryKeyMapper" ref="configPrimaryKeyMapper"></property>
-	    <property name="configPublicCharMapper" ref="configPublicCharMapper"></property>
-	    <property name="configQuestionFirstKindMapper" ref="configQuestionFirstKindMapper"></property>
-	    <property name="configQuestionSecondKindMapper" ref="configQuestionSecondKindMapper"></property>
-	    <property name="engageAnswerDetailsMapper" ref="engageAnswerDetailsMapper"></property>
-	    <property name="engageAnswerMapper" ref="engageAnswerMapper"></property>
-	    <property name="engageExamDetailsMapper" ref="engageExamDetailsMapper"></property>
-	    <property name="engageExamMapper" ref="engageExamMapper"></property>
-	    <property name="engageInterviewMapper" ref="engageInterviewMapper"></property>
-	    <property name="engageMajorReleaseMapper" ref="engageMajorReleaseMapper"></property>
-	    <property name="engageResumeMapper" ref="engageResumeMapper"></property>
-	    <property name="engageSubjectsMapper" ref="engageSubjectsMapper"></property>
-	    <property name="humanFileMapper" ref="humanFileMapper"></property>
-	    <property name="humanfileDigMapper" ref="humanfileDigMapper"></property>
-	    <property name="majorChangeMapper" ref="majorChangeMapper"></property>
-	    <property name="rightMapper" ref="rightMapper"></property>
-	    <property name="salaryGrantDetailsMapper" ref="salaryGrantDetailsMapper"></property>
-	    <property name="salaryGrantMapper" ref="salaryGrantMapper"></property>
-	    <property name="salaryStandardDetailsMapper" ref="salaryStandardDetailsMapper"></property>
-	    <property name="trainingMapper" ref="trainingMapper"></property>
-	    <property name="userMapper" ref="userMapper"></property>
-	   
-	    <property name="sysRoleMapper" ref="sysRoleMapper"></property>
-	    <property name="sysRoleRightMapper" ref="sysRoleRightMapper"></property>
-	    <property name="dataMapper" ref="dataMapper"></property>
-	</bean>
-	
-	
 	
 		
+	<bean id="baseDao" class="jing.dao.BaseDao">
+		<property name="template" ref="hibernateTemplate"></property>
+	</bean>
+		
+	<bean id="empDao" class="jing.dao.EmpDao" parent="baseDao"></bean>
+	<bean id="deptDao" class="jing.dao.DeptDao" parent="baseDao"></bean>
+	
+	
+	<bean id="firmService" class="jing.service.FirmService">
+		<property name="deptDao" ref="deptDao"></property>
+		<property name="empDao" ref="empDao"></property>
+	</bean>
+
+	<bean id="firmAction"  class="jing.action.FirmAction" scope="prototype">
+		<property name="firmService" ref="firmService"></property>
+	</bean>
+
+	 
+	<!-- 事务管理相关的配置 -->
+
+	<!-- 配置what 切面逻辑 -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 配置事务的传播特性 How -->
+	<tx:advice id="adv1" transaction-manager="txManager">
+		<tx:attributes>
+			<!-- 默认不使用事务，如果该方法被有事务的方法嵌套了，也不会抛出异常 -->
+			<tx:method name="find*" propagation="SUPPORTS" />
+			<tx:method name="query*" propagation="SUPPORTS" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="testTransaction" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置切面 -->
+	<aop:config>
+		<!-- what(when) How where -->
+		<aop:advisor advice-ref="adv1"
+			pointcut="execution(* jing.service.*Service.*(..))" />
+	</aop:config>
 </beans>

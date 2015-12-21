@@ -9,8 +9,8 @@
 <body>
 	<div align="center">
 		<h1>index.jsp</h1>
-		<h3><a href="firmAction.do?method=findAllEmp">Query Emp List!</a></h3>
-		<h3><a href="firmAction.do?method=findAllDept">Query Dept List!</a></h3>
+		<h3><a href="firmAction!findAllEmp">Query Emp List!</a></h3>
+		<h3><a href="firmAction!findAllDept">Query Dept List!</a></h3>
 	</div>
 </body>
 </html>

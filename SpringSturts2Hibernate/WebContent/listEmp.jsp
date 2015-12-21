@@ -12,7 +12,7 @@
 		<h1>list.jsp</h1>
 		<h4>
 			<a href="index.jsp">index.jsp</a><br>
-			<a href="firmAction.do?method=toAddEmp">add Emp</a><br>
+			<a href="firmAction!toAddEmp">add Emp</a><br>
 		</h4>
 		<br>
 		<table border="1">
@@ -30,8 +30,8 @@
 					<td>${e.sal }</td>
 					<td>${e.dept.dname }</td>
 					<td>
-						<a href="firmAction.do?method=toModifyEmp&empno=${e.empno}">修改</a>
-						<a href="firmAction.do?method=removeEmp&empno=${e.empno}">删除</a>
+						<a href="firmAction!toModifyEmp?empno=${e.empno}">修改</a>
+						<a href="firmAction!removeEmp?empno=${e.empno}">删除</a>
 					</td>
 				</tr>				
 			</c:forEach>
