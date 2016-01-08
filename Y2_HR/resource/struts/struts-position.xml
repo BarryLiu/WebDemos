@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+    
+    <package name="recruit" namespace="/recruit" extends="struts-default">
+		<action name="position" class="positionAction">
+		    <result name="position_register">/page/recruit/position/position_register.jsp</result>
+		    <result name="position_change_update">/page/recruit/position/position_change_update.jsp</result>
+		    <result name="position_release_change">/page/recruit/position/position_release_change.jsp</result>
+		    <result name="position_release_search">/page/recruit/position/position_release_search.jsp</result>
+		    <result name="position_release_details">/page/recruit/position/position_release_details.jsp</result>
+		</action>
+		
+		<action name="resume" class="resumeAction">
+		    <result name="register">/page/recruit/resume/register.jsp</result>
+		    <result name="resume-choose">/page/recruit/resume/resume-choose.jsp</result>
+		    <result name="resume-list">/page/recruit/resume/resume-list.jsp</result>
+		    <result name="valid-resume">/page/recruit/resume/valid-resume.jsp</result>
+		    <result name="resume_details">/page/recruit/resume/resume-details.jsp</result>
+		   
+		    <result name="valid-list">/page/recruit/resume/valid-list.jsp</result>
+		    <result name="resume-select">/page/recruit/resume/resume-select.jsp</result>
+		</action>
+		
+		<action name="interview" class="interViewAction">
+		    <result name="interview-resume">/page/recruit/interview/interview-resume.jsp</result>
+		    <result name="interview-list">/page/recruit/interview/interview-list.jsp</result>
+		    <result name="interview-register">/page/recruit/interview/interview-register.jsp</result>
+		    
+		    <result name="sift-list">/page/recruit/interview/sift-list.jsp</result>
+		    <result name="interview-sift">/page/recruit/interview/interview-sift.jsp</result>
+		</action>
+        
+		<action name="employ" class="employAction">
+		    <!--  录用 申请 -->
+		    <result name="register_list">/page/recruit/employ/register_list.jsp</result>
+		    <result name="register">/page/recruit/employ/register.jsp</result>
+		    
+		    <!-- 录用审批 -->
+		    <result name="check_list">/page/recruit/employ/check_list.jsp</result>
+		    <result name="check">/page/recruit/employ/check.jsp</result>
+				<!-- 审批通过就插一条数据到人力资源 -->
+		    		    <result name="human_register">/page/profile/human_register.jsp</result>
+		 
+		    <!-- 录用审批 -->
+		    <result name="list">/page/recruit/employ/list.jsp</result>
+		    <result name="details">/page/recruit/employ/details.jsp</result>
+		</action>
+        
+    </package>
+    
+    
+</struts>

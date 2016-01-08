@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+	<package name="client" namespace="/client" extends="struts-default">
+		<action name="clientAction" class="clientAction">
+			<result name="first_kind">/page/client/first_kind.jsp;</result>
+			<result name="first_delete_success">/page/client/first_delete_success.jsp;</result>
+			<result name="first_kind_register_success">/page/client/first_kind_register_success.jsp;</result>
+			<result name="first_kind_change">/page/client/first_kind_change.jsp;</result>
+			<result name="first_kind_change_success">/page/client/first_kind_change_success.jsp;</result>
+			
+			<result name="second_kind">/page/client/second_kind.jsp;</result>
+			<result name="second_delete_success">/page/client/second_delete_success.jsp;</result>
+			<result name="second_kind_register_success">/page/client/second_kind_register_success.jsp;</result>
+			<result name="second_kind_change">/page/client/second_kind_change.jsp;</result>
+			<result name="second_kind_change_success">/page/client/second_kind_change_success.jsp;</result>
+			<result name="second_kind_register">/page/client/second_kind_register.jsp;</result>
+			
+			<result name="third_kind">/page/client/third_kind.jsp;</result>
+			<result name="third_delete_success">/page/client/third_delete_success.jsp;</result>
+			<result name="third_kind_register_success">/page/client/third_kind_register_success.jsp;</result>
+			<result name="third_kind_change">/page/client/third_kind_change.jsp;</result>
+			<result name="third_kind_change_success">/page/client/third_kind_change_success.jsp;</result>
+			<result name="third_kind_register">/page/client/third_kind_register.jsp;</result>
+		
+			<result name="major_kind">/page/client/major_kind.jsp;</result>
+			
+			<result name="major">/page/client/major.jsp;</result>
+			<result name="major_add">/page/client/major_add.jsp;</result>
+			
+			<result name="public_char">/page/client/public_char.jsp;</result>
+			
+			<result name="salary_item">/page/client/salary_item.jsp;</result>
+			
+			<result name="profession_design">/page/client/profession_design.jsp;</result>
+		
+			<result name="primary_key">/page/client/primary_key.jsp;</result>
+			<result name="primary_key_register">/page/client/primary_key_register.jsp</result>
+			
+			<result name="salary_grant_mode_success">/page/client/salary_grant_mode_success.jsp</result>
+		</action>
+	</package>
+</struts>
