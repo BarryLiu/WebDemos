@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+	<package name="data" namespace="/data" extends="struts-default">
+	    <action name="dataAction" class="dataAction" >
+	        <result name="excel_locate">/page/criterionData/excel_locate.jsp</result>
+	        <result name="pdf_locate">/page/criterionData/pdf_locate.jsp</result>
+	        <result name="xml_locate">/page/criterionData/xml_locate.jsp</result>
+	    </action>
+	</package>    
+</struts>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd ">
+    
+    <bean id="grantService" class="hr.service.salaryGrant.GrantService"  parent="baseService"></bean>
+    
+    <bean id="grantAction" class="hr.action.salaryGrant.GrantAction" scope="prototype">
+        <property name="grantService" ref="grantService"></property>
+    </bean>
+
+    	
+</beans>
