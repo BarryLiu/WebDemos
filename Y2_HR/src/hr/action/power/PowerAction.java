@@ -41,7 +41,7 @@ public class PowerAction {
 	
 	public String userDelet(){// 删除用户
 		powerService.deleteUserById(users.getId());
-		return userList();
+		return null;//userList();
 	}
 	public String userSelectOne(){ // 编辑用户前 根据id 查询出来
 		users = powerService.selectUserById(users.getId());

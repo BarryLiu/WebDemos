@@ -221,4 +221,9 @@
      select * from config_primary_key ckey 
        where ckey.primary_key_status = 1 and ckey.primary_key_table = #{tableName}
   </select>
+  
+   <select id="selectBycolumnComment" resultMap="BaseResultMap" parameterType="String">
+  select * from config_primary_key where key_name=#{columnComment}
+  
+  </select>
 </mapper>

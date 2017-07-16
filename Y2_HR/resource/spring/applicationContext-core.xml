@@ -55,7 +55,6 @@
 	    <property name="engageResumeMapper" ref="engageResumeMapper"></property>
 	    <property name="engageSubjectsMapper" ref="engageSubjectsMapper"></property>
 	    <property name="humanFileMapper" ref="humanFileMapper"></property>
-	    <property name="humanfileDigMapper" ref="humanfileDigMapper"></property>
 	    <property name="majorChangeMapper" ref="majorChangeMapper"></property>
 	    <property name="rightMapper" ref="rightMapper"></property>
 	    <property name="salaryGrantDetailsMapper" ref="salaryGrantDetailsMapper"></property>

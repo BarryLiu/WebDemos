@@ -54,7 +54,7 @@ public class UrrAction {
 	public String initMenu() throws IOException {
 		
 		if(id==null)id=0;
-		
+		//两种方法，第一种 权限都加载出来  第二种，加载该用户已经有的权限
 		List<Node> nodes = urrService.initMenu(id);
 		//List<Node> nodes = urrService.selectCurrUserRight(id);
 	

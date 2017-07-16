@@ -703,4 +703,107 @@
       check_time = #{checkTime,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  
+  <select id="selectByCheck" resultMap="BaseResultMap"
+		parameterType="map">
+		select * from major_change where check_status='0' limit
+		#{start} , #{rows};
+	</select>
+	<select id="count1" resultType="int">
+		select count(*) from major_change
+		where check_status='0';
+	</select>
+	
+	<select id="selectAll" parameterType="map" resultMap="BaseResultMap">
+		select * from major_change
+		<where>
+			check_status='1'
+			<if
+				test="majorChange.firstKindId != null and  majorChange.firstKindId != 0 ">
+				and first_kind_id=#{majorChange.firstKindId}
+			</if>
+			<if
+				test="majorChange.secondKindId != null and majorChange.secondKindId != 0 ">
+				and
+				second_kind_id=#{majorChange.secondKindId}
+			</if>
+			<if
+				test="majorChange.thirdKindId != null and majorChange.thirdKindId != 0 ">
+				and
+				third_kind_id=#{majorChange.thirdKindId}
+			</if>
+			<if
+				test="majorChange.MajorKindId != null and majorChange.MajorKindId != 0 ">
+				and
+				major_kind_id=#{majorChange.MajorKindId}
+			</if>
+			<if test="majorChange.MajorId != null and majorChange.MajorId != 0">
+				and
+				human_major_id=#{majorChange.humanMajorId}
+			</if>
+			<if test="dd1 != null and dd2 != null">
+				and
+				regist_time &gt;= {dd1}
+				and regist_time
+				&lt;=#{dd2}
+			</if>
+			<if test="dd1 != null and dd2 = null">
+				and
+				regist_time &gt;= {dd1}
+			</if>
+			<if test="dd1 = null and dd2 != null">
+				and
+				regist_time &lt;= {dd2}
+			</if>
+
+		</where>
+		limit #{start} , #{rows}
+	</select>
+	
+	<select id="count2" resultType="int" parameterType="map">
+		select
+		count(*) from major_change
+		<where>
+			check_status='1'
+			<if
+				test="majorChange.firstKindId != null and  majorChange.firstKindId != 0 ">
+				and first_kind_id=#{majorChange.firstKindId}
+			</if>
+			<if
+				test="majorChange.secondKindId != null and majorChange.secondKindId != 0 ">
+				and
+				second_kind_id=#{majorChange.secondKindId}
+			</if>
+			<if
+				test="majorChange.thirdKindId != null and majorChange.thirdKindId != 0 ">
+				and
+				third_kind_id=#{majorChange.thirdKindId}
+			</if>
+			<if
+				test="majorChange.MajorKindId != null and majorChange.MajorKindId != 0 ">
+				and
+				major_kind_id=#{majorChange.MajorKindId}
+			</if>
+			<if test="majorChange.MajorId != null and majorChange.MajorId != 0">
+				and
+				human_major_id=#{majorChange.humanMajorId}
+			</if>
+			<if test="dd1 != null and dd2 != null">
+				and
+				regist_time &gt;= {dd1}
+				and regist_time
+				&lt;=#{dd2}
+			</if>
+			<if test="dd1 != null and dd2 = null">
+				and
+				regist_time &gt;= {dd1}
+			</if>
+			<if test="dd1 = null and dd2 != null">
+				and
+				regist_time &lt;= {dd2}
+			</if>
+
+		</where>
+	</select>
 </mapper>

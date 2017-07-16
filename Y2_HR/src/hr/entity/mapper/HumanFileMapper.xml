@@ -1235,43 +1235,110 @@
 		</where>
 		 limit #{start} , #{rows}
 	</select>
-	<select id="count" resultType="int" parameterType="map">
+	<select id="selectAll2" parameterType="map" resultMap="BaseResultMap1">
 		select
-		count(*) from human_file 
+		human.*,first.* from human_file
+		human,config_file_first_kind
+		first
 		<where>
 			human.first_kind_id=first.first_kind_id
-			<if
-				test="humanFile.firstKindId != null and  humanFile.firstKindId != 0 ">
+			<if test="humanFile.firstKindId != null and  humanFile.firstKindId != 0 ">
 				and human.first_kind_id=#{humanFile.firstKindId}
 			</if>
-			<if
-				test="humanFile.secondKindId != null and humanFile.secondKindId != 0 ">
+			<if test="humanFile.secondKindId != null and humanFile.secondKindId != 0 ">
 				and
-				second_kind_id=#{humanFile.secondKindId}
+				human.second_kind_id=#{humanFile.secondKindId}
 			</if>
-			<if
-				test="humanFile.thirdKindId != null and humanFile.thirdKindId != 0 ">
+			<if test="humanFile.thirdKindId != null and humanFile.thirdKindId != 0 ">
 				and
-				third_kind_id=#{humanFile.thirdKindId}
+				human.third_kind_id=#{humanFile.thirdKindId}
 			</if>
 			<if
 				test="humanFile.humanMajorKindId != null and humanFile.humanMajorKindId != 0 ">
 				and
-				human_major_kind_id=#{humanFile.humanMajorKindId}
+				human.human_major_kind_id=#{humanFile.humanMajorKindId}
+			</if>
+			<if test="humanFile.humanMajorId != null and humanFile.humanMajorId != 0">
+				and
+				human.human_major_id=#{humanFile.humanMajorId}
+			</if>
+			<if test="dd1 != null and dd2 != null">
+				and
+				human.regist_time &gt;= {dd1}
+				and human.regist_time
+				&lt;=#{dd2}
+			</if>
+			<if test="dd1 != null and dd2 = null">
+				and
+				human.regist_time &gt;= {dd1}
+			</if>
+			<if test="dd1 = null and dd2 != null">
+				and
+				human.regist_time &lt;= {dd2}
+			</if>
+
+		</where>
+		limit #{start} , #{rows}
+	</select>
+	<select id="count" resultType="int" parameterType="hr.entity.HumanFile">
+		select
+		count(*) from human_file
+		human,config_file_first_kind first
+		where
+		human.first_kind_id=first.first_kind_id
+		and
+		human.first_kind_id=#{firstKindId}
+		and
+		second_kind_id=#{secondKindId}
+		and
+		third_kind_id=#{thirdKindId} 
+		and
+		human_major_kind_id=#{humanMajorKindId} 
+		and
+		human_major_id=#{humanMajorId}
+	</select>
+  
+  <select id="count1" resultType="int" parameterType="map">
+		select
+		count(*) from human_file
+		human,config_file_first_kind first
+		<where>
+			human.first_kind_id=first.first_kind_id
+			<if test="humanFile.firstKindId != null and  humanFile.firstKindId != 0 ">
+				and human.first_kind_id=#{humanFile.firstKindId}
+			</if>
+			<if test="humanFile.secondKindId != null and humanFile.secondKindId != 0 ">
+				and
+				human.second_kind_id=#{humanFile.secondKindId}
+			</if>
+			<if test="humanFile.thirdKindId != null and humanFile.thirdKindId != 0 ">
+				and
+				human.third_kind_id=#{humanFile.thirdKindId}
 			</if>
 			<if
-				test="humanFile.humanMajorId != null and humanFile.humanMajorId != 0">
+				test="humanFile.humanMajorKindId != null and humanFile.humanMajorKindId != 0 ">
 				and
-				human_major_id=#{humanFile.humanMajorId}
+				human.human_major_kind_id=#{humanFile.humanMajorKindId}
+			</if>
+			<if test="humanFile.humanMajorId != null and humanFile.humanMajorId != 0">
+				and
+				human.human_major_id=#{humanFile.humanMajorId}
+			</if>
+			<if test="dd1 != null and dd2 != null">
+				and
+				human.regist_time &gt;= {dd1}
+				and human.regist_time
+				&lt;=#{dd2}
+			</if>
+			<if test="dd1 != null and dd2 = null">
+				and
+				human.regist_time &gt;= {dd1}
+			</if>
+			<if test="dd1 = null and dd2 != null">
+				and
+				human.regist_time &lt;= {dd2}
 			</if>
 		</where>
 	</select>
-  
-  <select id="selectAllByTag" resultMap="BaseResultMap" parameterType="map">
-      select * from human_file 
-      limit #{start} , #{rows}
-  </select>
-  <select id="countTag">
-	select count(*)	 from human_file 
-  </select>
+	
 </mapper>

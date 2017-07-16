@@ -37,4 +37,6 @@ public interface ConfigPrimaryKeyMapper {
      * @return
      */
 	List<ConfigPrimaryKey> selectPrimaryKey(@Param("tableName") String tableName);
+
+	ConfigPrimaryKey selectBycolumnComment(String string);
 }

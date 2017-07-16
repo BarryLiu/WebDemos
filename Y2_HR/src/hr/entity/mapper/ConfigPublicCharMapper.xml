@@ -181,7 +181,9 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   
-  
+   <select id="selectByName" resultMap="BaseResultMap">
+  select * from config_public_char where attribute_kind='职称'
+  </select>
   
   
  

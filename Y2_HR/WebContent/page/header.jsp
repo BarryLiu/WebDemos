@@ -12,4 +12,3 @@
 <script type="text/javascript" src="/Y2_HR/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Y2_HR/js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="/Y2_HR/js/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="/Y2_HR/js/plugins/jquery.messager.js"></script>

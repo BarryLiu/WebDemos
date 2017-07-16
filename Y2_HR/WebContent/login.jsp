@@ -25,16 +25,12 @@
 		</script>
 		
 	
-	<%@include file="/page/header.jsp" %>
 		<script type="text/javascript"
 			src="javascript/login.js">
 		</script>
 		
 	</head>
 	<body>
-	<% 
-		session.removeAttribute("currUser");
-	%>
 		<form action="" method="post">
 			<div>
 				<table cellspacing=0 cellpadding=0 width=900 align=center border=0>

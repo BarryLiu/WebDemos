@@ -5,11 +5,8 @@ import hr.entity.ConfigFileSecondKind;
 import hr.entity.ConfigFileThirdKind;
 import hr.entity.ConfigMajor;
 import hr.entity.ConfigMajorKind;
-import hr.entity.ConfigPublicChar;
 import hr.entity.HumanFile;
 import hr.service.profile.ProfileService;
-import hr.service.recruit.ResumeService;
-import hr.utils.UtilBean;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,13 +26,9 @@ import com.google.gson.Gson;
 public class ProfileAction {
 	// 为action 写 实现逻辑
 	private ProfileService profileService;
-	private ResumeService resumeService;
 
 	public void setProfileService(ProfileService profileService) {
 		this.profileService = profileService;
-	}
-	public void setResumeService(ResumeService resumeService) {
-		this.resumeService = resumeService;
 	}
 // 
 	private int page;// 页码
@@ -49,39 +42,12 @@ public class ProfileAction {
 	private List<ConfigMajorKind> majorKinds;
 	private ConfigFileFirstKind first;
 
-	private UtilBean utilBean;
 	private HumanFile humanFile;
 	private HttpServletRequest request;
 	private List<HumanFile> humanFiles;
-	private List<ConfigPublicChar> configPublicChars;
+
 	
 
-	private int count ;
-	
-	public UtilBean getUtilBean() {
-		return utilBean;
-	}
-	public void setUtilBean(UtilBean utilBean) {
-		this.utilBean = utilBean;
-	}
-	public HttpServletRequest getRequest() {
-		return request;
-	}
-	public void setRequest(HttpServletRequest request) {
-		this.request = request;
-	}
-	public List<ConfigPublicChar> getConfigPublicChars() {
-		return configPublicChars;
-	}
-	public void setConfigPublicChars(List<ConfigPublicChar> configPublicChars) {
-		this.configPublicChars = configPublicChars;
-	}
-	public ProfileService getProfileService() {
-		return profileService;
-	}
-	public ResumeService getResumeService() {
-		return resumeService;
-	}
 	public int getPage() {
 		return page;
 	}
@@ -90,12 +56,6 @@ public class ProfileAction {
 	}
 	public int getRows() {
 		return rows;
-	}
-	public int getCount() {
-		return count;
-	}
-	public void setCount(int count) {
-		this.count = count;
 	}
 	public void setRows(int rows) {
 		this.rows = rows;
@@ -162,14 +122,16 @@ public class ProfileAction {
 	
 	
 	
-	 
-//人力资源档案查询      查询出所有的一级菜单====================3
+	//  查询出所有的一级菜单
 	public String toQueryLocate() {
 
+		System.out.println("laile...............");
 		// 查询一级分类种类
 		firsts = profileService.selectAllFirsts();
+
 		// 查询全部 的 职位种类
 		majorKinds = profileService.selectAllMajorKinds();
+
 		return "query_locate";
 	}
 
@@ -232,73 +194,16 @@ public class ProfileAction {
 	 * @throws IOException
 	 */
 	public String selectProfile() throws IOException {
-		
+		System.out.println(humanFile);
 		Map<String, Object> data = profileService.selectProfile(humanFile,
 				page, rows);
 		String jsonStr = new Gson().toJson(data);
+
 		System.out.println("jsonStr:    " + jsonStr);
+		System.out.println("ok.......");
+
 		sendClient(jsonStr);
-		System.out.println("page: " + page+"rows"+rows);
+
 		return null;
-	}
-	/**分页查询 比上面方法多了一个 条件(jsp 传过来 queryTag的值) 查询功能*/
-	public String selectProfileTag() throws IOException {
-		
-		Map<String, Object> data = profileService.selectProfileTag(humanFile,utilBean,
-				page, rows);
-		String jsonStr = new Gson().toJson(data);
-		System.out.println("jsonStr:    " + jsonStr);
-		
-		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setContentType("text/json;charset=utf-8");
-		response.setCharacterEncoding("utf-8");
-		response.getWriter().write(jsonStr);
-		return null;
-	}
-	
-	
-// 人力资源档案登记  ==================================================1
-	public String humanRegister(){
-		System.out.println("进入人力资源档案登记");
-		
-		firsts = profileService.selectAllFirsts();// 查询一级分类种类
-		majorKinds = profileService.selectAllMajorKinds();// 查询全部 的 职位种类
-		configPublicChars = resumeService.selectPublicChar(); // 查询全部的公共字段
-		return "human_register";
-	}
-	public String doTijiao(){
-		System.out.println("提交的数据："+humanFile);
-		profileService.saveHumanFile(humanFile);
-		return "register_choose_picture";
-	}
-	public String doDengji(){ // 登记
-		System.out.println("登记。。");
-		return null;
-	}
-	
-	
-// 人力资源档案登记复核================================================2
-	public String checkList(){
-		count = profileService.selectCount();
-		return "check_list";
-	}
-	public String humanCheck(){ // 复核
-		humanFile = profileService.selectHumanFile(humanFile.getId());
-		return "human_check";
-	}
-	
-	
-// 人力资源档案变更 ====================================================4
-	public String changeLocate(){
-		// 查询一级分类种类
-		firsts = profileService.selectAllFirsts();
-		// 查询全部 的 职位种类
-		majorKinds = profileService.selectAllMajorKinds();
-		return "change_locate";
-	}
-	public String toChange(){
-		humanFile = profileService.selectHumanFile(humanFile.getId());
-		configPublicChars = resumeService.selectPublicChar(); // 查询全部的公共字段
-		return "change_list_information";
 	}
 }

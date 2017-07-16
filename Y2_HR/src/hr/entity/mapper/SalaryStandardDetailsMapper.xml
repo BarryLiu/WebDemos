@@ -227,4 +227,11 @@
       salary = #{salary,jdbcType=DOUBLE}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  
+  
+  <!-- ssss -->
+  <select id="findBySalaryStandardId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  	select * from salary_standard_details where standard_id =#{salaryStandardId}
+  </select>
 </mapper>

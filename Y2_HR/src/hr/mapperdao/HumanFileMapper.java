@@ -2,8 +2,8 @@ package hr.mapperdao;
 
 import hr.entity.HumanFile;
 import hr.entity.HumanFileExample;
-import hr.utils.UtilBean;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -33,12 +33,12 @@ public interface HumanFileMapper {
 
     
 //    自定义查询语句
-	int count(@Param("humanFile")HumanFile humanFile);
+	int count(HumanFile humanFile);
 
 	List<HumanFile> selectAll(@Param("humanFile")HumanFile humanFile,@Param("start") int start,@Param("rows") int rows);
 
-	List<HumanFile> selectAllByTag(@Param("humanFile")HumanFile humanFile,@Param("utilBean") UtilBean utilBean,
-			@Param("queryTag")String queryTag,@Param("start") int start,@Param("rows") int rows);
+	List<HumanFile> selectAll2(@Param("humanFile")HumanFile humanFile,@Param("start") int start,@Param("rows") int rows,
+			@Param("dd1")Date dd1,@Param("dd2") Date dd2);
 
-	int countTag(@Param("humanFile")HumanFile humanFile,@Param("utilBean") UtilBean utilBean);
+	int count1(@Param("humanFile")HumanFile humanFile,@Param("dd1") Date dd1,@Param("dd2") Date dd2);
 }

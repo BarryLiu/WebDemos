@@ -2,7 +2,9 @@ package hr.mapperdao;
 
 import hr.entity.SalaryStandardDetails;
 import hr.entity.SalaryStandardDetailsExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SalaryStandardDetailsMapper {
@@ -27,4 +29,6 @@ public interface SalaryStandardDetailsMapper {
     int updateByPrimaryKeySelective(SalaryStandardDetails record);
 
     int updateByPrimaryKey(SalaryStandardDetails record);
+
+	List<SalaryStandardDetails> findBySalaryStandardId(@Param("salaryStandardId")Integer salaryStandardId);
 }

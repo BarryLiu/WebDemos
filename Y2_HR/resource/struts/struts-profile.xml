@@ -3,22 +3,8 @@
 <struts>
 	<package name="profile" namespace="/profile" extends="struts-default">
 		<action name="profileAction" class="profileAction">
-		<!-- 人力资源档案登记 -->
-			<result name="human_register">/page/profile/human_register.jsp</result>
-			<result name="register_choose_picture">/page/profile/register_choose_picture.jsp</result>
-		
-			<result name="success">/page/profile/success.html</result>
-			<result name="human_check">/page/profile/human_check.jsp</result>
-			
-			<result name="check_list">/page/profile/check_list.jsp</result>
-		    
-		    
 			<result name="query_locate">/page/profile/query_locate.jsp</result>
 			<result name="query_list">/page/profile/query_list.jsp</result>
-		<!-- 人力资源档案变更 -->
-			<result name="change_locate">/page/profile/change_locate.jsp</result>
-			<result name="change_list">/page/profile/change_list.jsp</result>
-			<result name="change_list_information">/page/profile/change_list_information.jsp</result>
 		</action>
 	</package>
 </struts>

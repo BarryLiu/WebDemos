@@ -30,6 +30,8 @@ public interface ConfigPublicCharMapper {
 
     int updateByPrimaryKey(ConfigPublicChar record);
 
+	List<ConfigPublicChar> selectByName();
+
     
  
 }
