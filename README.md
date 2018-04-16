@@ -1,7 +1,7 @@
 
 Spring+Struts2+MyBatis(Y2_HR)
 ============
-* encoding: gbk
+* encoding: utf-8
 * Java&IDE: JDK7 Eclipse 
 * Backend:  Struts2.3.7 Spring3.1.1 MyBatis3.3.0 (Configured by mapper)
 * Frontend: JQuery-EasyUI1.4 Javascript JQuery Ajax
@@ -11,7 +11,7 @@ Spring+Struts2+MyBatis(Y2_HR)
 * Windows: in10
 * Other: jxl dom4j itext POI C3P0  Log4j 
 ---------
- 
+
   Spring+Struts1+Hibernate
   ================
 
