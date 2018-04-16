@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jing.entity.UserMapper">
+    <!-- 如果要用springMVC3.0 以后的 mapper 接口查询方式的话，Mapper.xml 的命名空间(namespace)就要指向哪个接口路径 -->
+    
+    <resultMap type="jing.entity.User" id="BaseResultMap">
+        <id property="userId" column="userid" />
+        <result property="userName" column="username"/>
+        <result property="password" column="password"/>
+		<result property="filePath" column="filepath"/>        
+    </resultMap>
+
+    <!-- 如果有sql关键字的话要用 “`” 符号引起来-->
+	<select id="selectAll" resultMap="BaseResultMap">
+		select * from `user`	    
+	</select>    
+	
+	<select id="selectById" resultType="jing.entity.User" parameterType="java.lang.Integer">
+		select * from `user` where userid = #{id}	    
+	</select>
+	
+	<update id="update" parameterType="jing.entity.User" >
+		update `user` set username=#{userName} , password=#{password} where userid= #{userId} 	    
+	</update>
+    
+	<insert id="insert" parameterType="jing.entity.User">
+		insert into `user` values(null,#{userName},#{password},#{filePath})	    
+	</insert>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from `user` where userid=#{userId}	    
+	</delete>
+    
+</mapper>
+ 
